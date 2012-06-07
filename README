@@ -1,0 +1,44 @@
+NAME
+    Lingua::JA::NormalizeText - normalizes text
+
+SYNOPSIS
+      use Lingua::JA::NormalizeText qw/nfkc decode_entities/;
+      use utf8;
+
+      my @option = ( qw/nfkc decode_entities/, \&dearinsu_to_desu );
+      my $normalizer = Lingua::JA::NormalizeText->new(@option);
+
+      print $normalizer->normalize('鳥が㌧㌦でありんす&hearts;');
+      # -> 鳥がトンドルです♥
+      # or
+      #
+      my $text = '鳥が㌧㌦でありんす&hearts;';
+      print dearinsu_to_desu( decode_entities( nfkc($text) ) );
+
+      sub dearinsu_to_desu
+      {
+          my $text = shift;
+          $text =~ s/でありんす/です/;
+
+          return $text;
+      }
+
+DESCRIPTION
+    Lingua::JA::NormalizeText normalizes text.
+
+METHODS
+  normalize(@options)
+    The following options are available.
+
+      lc nfkc nfkd nfc nfd decode_entities
+
+    External functions also available. (See SYNOPSIS section)
+
+AUTHOR
+    pawa <pawapawa@cpan.org>
+
+SEE ALSO
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+

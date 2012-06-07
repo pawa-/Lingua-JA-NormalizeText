@@ -7,15 +7,15 @@ use utf8;
 
 use Carp ();
 use Exporter           qw/import/;
-use Unicode::Normalize qw/NFKC NFKD NFC NFD/;
-use HTML::Entities     qw/decode_entities/;
+use Unicode::Normalize ();
+use HTML::Entities     ();
 
 our $VERSION     = '0.00_1';
 our @EXPORT      = qw();
 our @EXPORT_OK   = qw(nfkc nfkd nfc nfd decode_entities);
 our %EXPORT_TAGS = ( all => [ @EXPORT, @EXPORT_OK ] );
 
-my @AVAILABLE_OPTS = qw/lc nfkc nfkd nfc nfd decode_entities/;
+my @AVAILABLE_OPTS = (qw/lc/, @EXPORT_OK);
 
 
 sub new
@@ -23,21 +23,31 @@ sub new
     my ($class, @opts) = @_;
     my $self = bless {}, $class;
 
-    $self->{converters} = [];
-
-    my %set = map { $_ => 1 } @opts;
-
     Carp::croak("at least one option is needed") unless scalar @opts;
 
-    for my $available_opt (@AVAILABLE_OPTS)
+    $self->{converters} = [];
+
+    my @unavailable_opts;
+
+    for (my $i = 0; $i < scalar @opts; $i++)
     {
-        if (delete $set{$available_opt})
+        if (ref $opts[$i] ne 'CODE')
         {
-            push(@{ $self->{converters} }, $available_opt);
+            # List::MoreUtils::any のほうが早いかもしれん
+            if ( grep { $_ eq $opts[$i] } @AVAILABLE_OPTS )
+            {
+                push( @{ $self->{converters} }, $opts[$i] );
+            }
+            else { push(@unavailable_opts, $opts[$i] ); }
+        }
+        else
+        {
+            # external function
+            push( @{ $self->{converters} }, $opts[$i] );
         }
     }
 
-    Carp::croak( "unknown option(s): " . join(', ', keys %set) ) if keys %set;
+    Carp::croak( "unknown option(s): " . join(', ', @unavailable_opts) ) if scalar @unavailable_opts;
 
     return $self;
 }
@@ -65,26 +75,7 @@ sub nfkc { Unicode::Normalize::NFKC(shift); }
 sub nfkd { Unicode::Normalize::NFKD(shift); }
 sub nfc  { Unicode::Normalize::NFC(shift);  }
 sub nfd  { Unicode::Normalize::NFD(shift);  }
-
-=begin
-sub wavetilde2long
-{
-    my $tilde = chr(hex("FF5E"));
-    my $wave  = chr(hex("301C"));
-    my $long  = chr(hex("30FC"));
-
-    my $text = shift;
-    $text =~ s/[$wave$tilde]/$long/eg;
-
-    return $text;
-}
-=end
-=cut
-
-{
-    no warnings 'redefine';
-    sub decode_entities { HTML::Entities::decode_entities(shift); }
-}
+sub decode_entities { HTML::Entities::decode_entities(shift); }
 
 1;
 
@@ -96,11 +87,41 @@ Lingua::JA::NormalizeText - normalizes text
 
 =head1 SYNOPSIS
 
-  use Lingua::JA::NormalizeText;
+  use Lingua::JA::NormalizeText qw/nfkc decode_entities/;
+  use utf8;
+
+  my @option = ( qw/nfkc decode_entities/, \&dearinsu_to_desu );
+  my $normalizer = Lingua::JA::NormalizeText->new(@option);
+
+  print $normalizer->normalize('鳥が㌧㌦でありんす&hearts;');
+  # -> 鳥がトンドルです♥
+  # or
+  #
+  my $text = '鳥が㌧㌦でありんす&hearts;';
+  print dearinsu_to_desu( decode_entities( nfkc($text) ) );
+
+  sub dearinsu_to_desu
+  {
+      my $text = shift;
+      $text =~ s/でありんす/です/;
+
+      return $text;
+  }
 
 =head1 DESCRIPTION
 
 Lingua::JA::NormalizeText normalizes text.
+
+=head1 METHODS
+
+=head2 normalize(@options)
+
+The following options are available.
+
+  lc nfkc nfkd nfc nfd decode_entities
+
+External functions also available.
+(See SYNOPSIS section)
 
 =head1 AUTHOR
 

@@ -26,8 +26,11 @@ my $normalizer = Lingua::JA::NormalizeText->new(qw/lc/);
 isa_ok($normalizer, 'Lingua::JA::NormalizeText');
 
 my $result;
-warning_is { $result = $normalizer->normalize } 'undefined text',
-'undefined text exception';
+warning_is { $result = $normalizer->normalize($result); } 'undefined text',
+'undefined text warning';
 is($result, undef, 'result of normalizing undefined text');
+
+$result = $normalizer->normalize('');
+is($result, '', 'result of normalizing empty undefined text');
 
 done_testing;

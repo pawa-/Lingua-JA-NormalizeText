@@ -5,7 +5,7 @@ use Lingua::JA::NormalizeText qw/nfkc nfkd nfc nfd/;
 use Test::More;
 
 binmode Test::More->builder->$_ => ':utf8'
-for qw/output failure_output todo_output/;
+    for qw/output failure_output todo_output/;
 
 is( nfkc('㌦'), 'ドル', 'NFKC' ); # ドル
 is( length nfkc('㌦'), 2, 'NFKC' );

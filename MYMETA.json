@@ -25,7 +25,9 @@
          "requires" : {
             "ExtUtils::MakeMaker" : "6.59",
             "Test::Fatal" : 0,
-            "Test::More" : "0.88"
+            "Test::More" : "0.88",
+            "Test::Requires" : 0,
+            "Test::Warn" : "0.2"
          }
       },
       "configure" : {
