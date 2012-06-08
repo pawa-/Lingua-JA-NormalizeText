@@ -120,8 +120,8 @@ The following options are available.
 
   lc nfkc nfkd nfc nfd decode_entities
 
-External functions also available.
-(See SYNOPSIS section)
+External functions are also addable.
+(See dearinsu_to_desu function of SYNOPSIS section)
 
 =head1 AUTHOR
 
