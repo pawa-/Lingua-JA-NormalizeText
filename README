@@ -2,18 +2,31 @@ NAME
     Lingua::JA::NormalizeText - normalizes text
 
 SYNOPSIS
-      use Lingua::JA::NormalizeText qw/nfkc decode_entities/;
+      use Lingua::JA::NormalizeText;
       use utf8;
 
-      my @option = ( qw/nfkc decode_entities/, \&dearinsu_to_desu );
-      my $normalizer = Lingua::JA::NormalizeText->new(@option);
+      my @options = ( qw/nfkc decode_entities/, \&dearinsu_to_desu );
+      my $normalizer = Lingua::JA::NormalizeText->new(@options);
 
       print $normalizer->normalize('鳥が㌧㌦でありんす&hearts;');
       # -> 鳥がトンドルです♥
-      # or
-      #
+
+      sub dearinsu_to_desu
+      {
+          my $text = shift;
+          $text =~ s/でありんす/です/;
+
+          return $text;
+      }
+
+    # or
+
+      use Lingua::JA::NormalizeText qw/nfkc decode_entities/;
+      use utf8;
+
       my $text = '鳥が㌧㌦でありんす&hearts;';
       print dearinsu_to_desu( decode_entities( nfkc($text) ) );
+      # -> 鳥がトンドルです♥
 
       sub dearinsu_to_desu
       {
@@ -32,7 +45,8 @@ METHODS
 
       lc nfkc nfkd nfc nfd decode_entities
 
-    External functions also available. (See SYNOPSIS section)
+    External functions are also addable. (See dearinsu_to_desu function of
+    SYNOPSIS section)
 
 AUTHOR
     pawa <pawapawa@cpan.org>

@@ -87,18 +87,14 @@ Lingua::JA::NormalizeText - normalizes text
 
 =head1 SYNOPSIS
 
-  use Lingua::JA::NormalizeText qw/nfkc decode_entities/;
+  use Lingua::JA::NormalizeText;
   use utf8;
 
-  my @option = ( qw/nfkc decode_entities/, \&dearinsu_to_desu );
-  my $normalizer = Lingua::JA::NormalizeText->new(@option);
+  my @options = ( qw/nfkc decode_entities/, \&dearinsu_to_desu );
+  my $normalizer = Lingua::JA::NormalizeText->new(@options);
 
   print $normalizer->normalize('鳥が㌧㌦でありんす&hearts;');
   # -> 鳥がトンドルです♥
-  # or
-  #
-  my $text = '鳥が㌧㌦でありんす&hearts;';
-  print dearinsu_to_desu( decode_entities( nfkc($text) ) );
 
   sub dearinsu_to_desu
   {
@@ -107,6 +103,24 @@ Lingua::JA::NormalizeText - normalizes text
 
       return $text;
   }
+
+# or
+
+  use Lingua::JA::NormalizeText qw/nfkc decode_entities/;
+  use utf8;
+
+  my $text = '鳥が㌧㌦でありんす&hearts;';
+  print dearinsu_to_desu( decode_entities( nfkc($text) ) );
+  # -> 鳥がトンドルです♥
+
+  sub dearinsu_to_desu
+  {
+      my $text = shift;
+      $text =~ s/でありんす/です/;
+
+      return $text;
+  }
+
 
 =head1 DESCRIPTION
 
