@@ -6,7 +6,7 @@ use Test::Fatal;
 use Test::Warn;
 
 
-my @subs = qw/new normalize lc nfkc nfkd nfc nfd decode_entities/;
+my @subs = (qw/new normalize/, @Lingua::JA::NormalizeText::EXPORT_OK);
 can_ok('Lingua::JA::NormalizeText', @subs);
 
 my $exception = exception{ Lingua::JA::NormalizeText->new; };
@@ -26,8 +26,8 @@ my $normalizer = Lingua::JA::NormalizeText->new(qw/lc/);
 isa_ok($normalizer, 'Lingua::JA::NormalizeText');
 
 my $result;
-warning_is { $result = $normalizer->normalize($result); } 'undefined text',
-'undefined text warning';
+warning_is { $result = $normalizer->normalize($result); } 'undefined value',
+'undefined value warning';
 is($result, undef, 'result of normalizing undefined text');
 
 $result = $normalizer->normalize('');

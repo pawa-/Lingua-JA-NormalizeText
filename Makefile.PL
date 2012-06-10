@@ -5,10 +5,13 @@ all_from 'lib/Lingua/JA/NormalizeText.pm';
 
 requires 'Carp';
 requires 'Exporter';
-requires 'Unicode::Normalize' => 1.00;
-requires 'HTML::Entities'     => 3.66;
+requires 'Unicode::Normalize'           => 1.00;
+requires 'HTML::Entities'               => 3.66;
+requires 'HTML::Scrubber'               => 0.09;
+requires 'Lingua::JA::Regular::Unicode' => 0.04;
 
 test_requires 'Test::More' => 0.88; # done_testing
+test_requires 'Test::Base';
 test_requires 'Test::Fatal';
 test_requires 'Test::Warn' => 0.20;
 test_requires 'Test::Requires';
