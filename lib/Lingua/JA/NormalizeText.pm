@@ -122,6 +122,8 @@ sub modernize_kana_usage { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; $_; 
 
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
 Lingua::JA::NormalizeText - text normalizer
