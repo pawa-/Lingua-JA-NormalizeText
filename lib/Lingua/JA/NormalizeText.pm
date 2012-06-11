@@ -12,7 +12,7 @@ use HTML::Entities     ();
 use HTML::Scrubber     ();
 use Lingua::JA::Regular::Unicode ();
 
-our $VERSION     = '0.01';
+our $VERSION     = '0.02';
 our @EXPORT      = qw();
 our @EXPORT_OK   = qw(nfkc nfkd nfc nfd decode_entities strip_html
 alnum_z2h alnum_h2z space_z2h space_h2z katakana_z2h katakana_h2z
@@ -185,7 +185,7 @@ The following options are available.
   nfkd                   ㌦                  ドル (length: 3)
   nfc
   nfd
-  decode_entities        &hearts             ♥
+  decode_entities        &hearts;            ♥
   strip_html             <em>あ</em>             あ    
   alnum_z2h              ＡＢＣ１２３        ABC123
   alnum_h2z              ABC123              ＡＢＣ１２３
