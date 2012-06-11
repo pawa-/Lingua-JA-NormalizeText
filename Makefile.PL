@@ -8,7 +8,7 @@ requires 'Exporter';
 requires 'Unicode::Normalize'           => 1.00;
 requires 'HTML::Entities'               => 3.66;
 requires 'HTML::Scrubber'               => 0.09;
-requires 'Lingua::JA::Regular::Unicode' => 0.04;
+requires 'Lingua::JA::Regular::Unicode' => 0.09;
 
 test_requires 'Test::More' => 0.88; # done_testing
 test_requires 'Test::Base';
