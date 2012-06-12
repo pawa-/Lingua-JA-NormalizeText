@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.05    Wed, 13 Jun 2012 00:18:42 +0900
+        - improved tests
+
 0.03    Tue, 12 Jun 2012 23:07:46 +0900
         - speed optimization
         - improved nl2space option
