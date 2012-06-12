@@ -205,7 +205,7 @@ The following options are available.
   dashes2long            —                   ー
   drawing_lines2long     ─                   ー
   unify_long_repeats     ヴァーーー          ヴァー
-  nl2space               \n                  (space)
+  nl2space               (new line)          (space)
   unify_long_spaces      (space)(space)      (space)
   remove_head_space      (space)あ(space)あ  あ(space)あ
   remove_tail_space      ああ(space)(space)  ああ
