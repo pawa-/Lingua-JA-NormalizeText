@@ -53,7 +53,7 @@ METHODS
       nfkd                   ㌦                  ドル (length: 3)
       nfc
       nfd
-      decode_entities        &hearts             ♥
+      decode_entities        &hearts;            ♥
       strip_html             <em>あ</em>             あ    
       alnum_z2h              ＡＢＣ１２３        ABC123
       alnum_h2z              ABC123              ＡＢＣ１２３

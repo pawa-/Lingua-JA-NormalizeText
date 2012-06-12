@@ -42,7 +42,7 @@ sub new
     {
         if (ref $opt ne 'CODE')
         {
-            # List::MoreUtils::any is slow.
+            # List::MoreUtils::any is slower.
             if ( grep { $_ eq $opt } @AVAILABLE_OPTS )
             {
                 push( @{ $self->{converters} }, $opt );
@@ -111,9 +111,9 @@ sub tilde2long           { local $_ = shift; tr/\x{FF5E}/\x{30FC}/; $_; }
 sub fullminus2long       { local $_ = shift; tr/\x{2212}/\x{30FC}/; $_; }
 sub dashes2long          { local $_ = shift; tr/\x{2012}\x{2013}\x{2014}\x{2015}/\x{30FC}/; $_; }
 sub drawing_lines2long   { local $_ = shift; tr/\x{2500}\x{2501}\x{254C}\x{254D}\x{2574}\x{2576}\x{2578}\x{257A}/\x{30FC}/; $_; }
-sub unify_long_repeats   { local $_ = shift; s/\x{30FC}{2,}/\x{30FC}/g; $_; }
-sub nl2space             { local $_ = shift; tr/\n/ /; $_; }
-sub unify_long_spaces    { local $_ = shift; s/\x{0020}{2,}/\x{0020}/g; s/\x{3000}{2,}/\x{3000}/g; $_; }
+sub unify_long_repeats   { local $_ = shift; tr/\x{30FC}/\x{30FC}/s; $_; }
+sub nl2space             { local $_ = shift; s/\x{000D}\x{000A}/ /g; tr/\x{000D}\x{000A}/ /; $_; }
+sub unify_long_spaces    { local $_ = shift; tr/\x{0020}/\x{0020}/s; tr/\x{3000}/\x{3000}/s; $_; }
 sub remove_head_space    { local $_ = shift; s/^\s+//gm; $_; }
 sub remove_tail_space    { local $_ = shift; s/\s+$//gm; $_; }
 sub modernize_kana_usage { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; $_; }
