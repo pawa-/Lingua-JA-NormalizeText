@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.03    Tue, 12 Jun 2012 23:07:46 +0900
+        - speed optimization
+
 0.02    Mon, 11 Jun 2012 20:57:51 +0900
         - changed dependency on Lingua::JA::Regular::Unicode from 0.04 to 0.09
 
