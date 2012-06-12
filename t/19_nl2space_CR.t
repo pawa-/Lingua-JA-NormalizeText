@@ -14,6 +14,9 @@ open(my $fh, '<:encoding(utf8)', './t/CR') or die $!;
 my $text = do { local $/; <$fh> };
 close($fh);
 
+my $nl = "\x{000D}";
+
+is($text, "あ${nl}い${nl}う${nl}");
 is(nl2space($text), 'あ い う ');
 is($normalizer->normalize($text), 'あ い う ');
 
