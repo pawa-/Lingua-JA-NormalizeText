@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.06    Thu, 14 Jun 2012 10:42:43 +0900
+        - fixed nl2space test for Windows
+
 0.05    Wed, 13 Jun 2012 00:18:42 +0900
         - improved tests
 
