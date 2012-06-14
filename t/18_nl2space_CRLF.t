@@ -14,6 +14,8 @@ open(my $fh, '<:encoding(utf8)', './t/CRLF') or die $!;
 my $text = do { local $/; <$fh> };
 close($fh);
 
+$text = nl2crlf($text) if $^O eq 'MSWin32';
+
 my $nl = "\x{000D}\x{000A}";
 
 is($text, "あ${nl}い${nl}う${nl}");
@@ -21,3 +23,11 @@ is(nl2space($text), 'あ い う ');
 is($normalizer->normalize($text), 'あ い う ');
 
 done_testing;
+
+
+sub nl2crlf
+{
+    my $text = shift;
+    $text=~ s/\n/\x{000D}\x{000A}/g;
+    return $text;
+}
