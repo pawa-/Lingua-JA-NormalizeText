@@ -11,9 +11,9 @@ is(katakana_z2h('ハァハァ'), 'ﾊｧﾊｧ');
 is(katakana_h2z('ｽｰﾊｰｽｰﾊｰ'), 'スーハースーハー');
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/katakana_z2h/);
-is($normalizer->normalize('カリカリ'), 'ｶﾘｶﾘ');
+is($normalizer->normalize('カリカリﾓﾌﾓﾌ'), 'ｶﾘｶﾘﾓﾌﾓﾌ');
 
 $normalizer = Lingua::JA::NormalizeText->new(qw/katakana_h2z/);
-is($normalizer->normalize('ﾓﾌﾓﾌ'), 'モフモフ');
+is($normalizer->normalize('カリカリﾓﾌﾓﾌ'), 'カリカリモフモフ');
 
 done_testing;

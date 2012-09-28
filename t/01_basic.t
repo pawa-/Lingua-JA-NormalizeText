@@ -26,11 +26,11 @@ my $normalizer = Lingua::JA::NormalizeText->new(qw/lc/);
 isa_ok($normalizer, 'Lingua::JA::NormalizeText');
 
 my $result;
-warning_is { $result = $normalizer->normalize($result); } 'undefined value',
-'undefined value warning';
-is($result, undef, 'result of normalizing undefined text');
+warning_like { $result = $normalizer->normalize($result); } qr/lc/,
+'normalize uninitialized value';
+is($result, '', 'result of normalizing uninitialized text');
 
 $result = $normalizer->normalize('');
-is($result, '', 'result of normalizing empty undefined text');
+is($result, '', 'result of normalizing empty text');
 
 done_testing;

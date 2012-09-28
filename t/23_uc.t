@@ -5,6 +5,6 @@ use Test::More;
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/uc/);
 
-ok($normalizer->normalize("DdD"), 'DDD');
+is($normalizer->normalize("DdD"), 'DDD');
 
 done_testing;

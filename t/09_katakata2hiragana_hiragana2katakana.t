@@ -11,9 +11,9 @@ is(katakana2hiragana('オコジョ'), 'おこじょ');
 is(hiragana2katakana('おこじょ'), 'オコジョ');
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/katakana2hiragana/);
-is($normalizer->normalize('パール'), 'ぱーる');
+is($normalizer->normalize('パールぱーる'), 'ぱーるぱーる');
 
 $normalizer = Lingua::JA::NormalizeText->new(qw/hiragana2katakana/);
-is($normalizer->normalize('ぱーる'), 'パール');
+is($normalizer->normalize('パールぱーる'), 'パールパール');
 
 done_testing;

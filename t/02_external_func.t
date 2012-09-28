@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use utf8;
 use Lingua::JA::NormalizeText;
-use Test::Requires qw/Acme::Ikamusume/;
 use Test::More;
 
 binmode Test::More->builder->$_ => ':utf8'
@@ -11,10 +10,10 @@ binmode Test::More->builder->$_ => ':utf8'
 
 my $text = 'アカサ㌍タなのです！';
 
-my $normalizer = Lingua::JA::NormalizeText->new( (qw/nfkc/, \&geso) );
-is($normalizer->normalize($text), 'アカサカロリータなのでゲソ!');
+my $normalizer = Lingua::JA::NormalizeText->new( (qw/nfkc/, \&sunoharize) );
+is($normalizer->normalize($text), 'アカサカロリータなのです!それと便座カバー');
 
 done_testing;
 
 
-sub geso { Acme::Ikamusume->geso(shift); }
+sub sunoharize { my $text = shift; $text .= "それと便座カバー"; return $text; }

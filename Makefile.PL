@@ -14,7 +14,6 @@ test_requires 'Test::More' => 0.88; # done_testing
 test_requires 'Test::Base';
 test_requires 'Test::Fatal';
 test_requires 'Test::Warn' => 0.20;
-test_requires 'Test::Requires';
 
 tests 't/*.t';
 author_tests 'xt';

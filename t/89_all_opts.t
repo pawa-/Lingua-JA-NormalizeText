@@ -12,7 +12,7 @@ binmode Test::More->builder->$_ => ':utf8'
 my @all_opts = (qw/lc uc/, @Lingua::JA::NormalizeText::EXPORT_OK);
 my $normalizer = Lingua::JA::NormalizeText->new(@all_opts);
 
-my $text = "<script>パ\0ン\0ツ</script>";
+my $text = "<script>パ\x{0000}ン\x{0000}ツ</script>.?*";
 warning_is { $normalizer->normalize($text); } '';
 
 done_testing;

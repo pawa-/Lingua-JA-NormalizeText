@@ -14,9 +14,9 @@ is(space_z2h($zenkaku_space), $hankaku_space);
 is(space_h2z($hankaku_space), $zenkaku_space);
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/space_z2h/);
-is($normalizer->normalize($zenkaku_space), $hankaku_space);
+is($normalizer->normalize($zenkaku_space x 2), $hankaku_space x 2);
 
 $normalizer = Lingua::JA::NormalizeText->new(qw/space_h2z/);
-is($normalizer->normalize($hankaku_space), $zenkaku_space);
+is($normalizer->normalize($hankaku_space x 3), $zenkaku_space x 3);
 
 done_testing;

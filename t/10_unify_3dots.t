@@ -19,7 +19,11 @@ run {
 };
 
 __DATA__
-=== one big dot
+=== one big hankaku dot
+--- input:    大正野球娘｡
+--- expected: 大正野球娘｡
+
+=== one big zenkaku dot
 --- input:    大正野球娘。
 --- expected: 大正野球娘。
 
@@ -31,11 +35,19 @@ __DATA__
 --- input:    である．
 --- expected: である．
 
-=== one middle dot
+=== one hankaku middle dot
+--- input:    ティロ･フィナーレ
+--- expected: ティロ･フィナーレ
+
+=== one zenkaku middle dot
 --- input:    ティロ・フィナーレ
 --- expected: ティロ・フィナーレ
 
-=== two big dots
+=== two big hankaku dots
+--- input:    ふぅ｡｡
+--- expected: ふぅ…
+
+=== two big zenkaku dots
 --- input:    ふぅ。。
 --- expected: ふぅ…
 
@@ -47,11 +59,19 @@ __DATA__
 --- input:    ふぅ．．
 --- expected: ふぅ…
 
-=== two middole dots
+=== two hankaku middole dots
+--- input:    ふぅ･･
+--- expected: ふぅ…
+
+=== two zenkaku middole dots
 --- input:    ふぅ・・
 --- expected: ふぅ…
 
-=== four big dots
+=== four big hankaku dots
+--- input:    ふぅ｡｡｡｡
+--- expected: ふぅ…
+
+=== four big zenkaku dots
 --- input:    ふぅ。。。。
 --- expected: ふぅ…
 
@@ -63,7 +83,11 @@ __DATA__
 --- input:    ふぅ．．．．
 --- expected: ふぅ…
 
-=== four middole dots
+=== four hankaku middle dots
+--- input:    ふぅ････
+--- expected: ふぅ…
+
+=== four zenkaku middole dots
 --- input:    ふぅ・・・・
 --- expected: ふぅ…
 
@@ -75,10 +99,30 @@ __DATA__
 --- input:    ・・・ふぅ・・・
 --- expected: …ふぅ…
 
-=== different two dots type1
+=== different two dots
 --- input:    ・。
 --- expected: ・。
 
-=== different two dots type2
+=== different three dots
+--- input:    ｡・。
+--- expected: ｡・。
+
+=== many dots type1
 --- input:    ・・・・・・・。
 --- expected: …。
+
+=== many dots type2
+--- input:    ・・・・・・・。。。
+--- expected: …
+
+=== many dots type3
+--- input:    ・・。。・・
+--- expected: …
+
+=== two dots
+--- input:    ‥
+--- expected: …
+
+=== two dots x2
+--- input:    ‥ふぅ‥
+--- expected: …ふぅ…

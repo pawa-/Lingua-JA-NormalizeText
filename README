@@ -24,17 +24,9 @@ SYNOPSIS
       use Lingua::JA::NormalizeText qw/nfkc decode_entities/;
       use utf8;
 
-      my $text = '鳥が㌧㌦でありんす&hearts;';
-      print dearinsu_to_desu( decode_entities( nfkc($text) ) );
-      # -> 鳥がトンドルです♥
-
-      sub dearinsu_to_desu
-      {
-          my $text = shift;
-          $text =~ s/でありんす/です/g;
-
-          return $text;
-      }
+      my $text = '㈱㋰㋫㋫&hearts;';
+      print decode_entities( nfkc($text) );
+      # -> (株)ムフフ♥
 
 DESCRIPTION
     Lingua::JA::NormalizeText normalizes text.
@@ -77,14 +69,15 @@ METHODS
       unify_long_spaces      (space)(space)      (space)
       remove_head_space      (space)あ(space)あ  あ(space)あ
       remove_tail_space      ああ(space)(space)  ああ
-      modernize_kana_usage   ゐヰゑヱ            いイえエ
+      old2new_kana           ゐヰゑヱ            いイえエ
+      old2new_kanji          亞逸鬭              亜逸闘
 
     The order these options are applied is according to the order of the
     elements of @options. (i.e., The first element is applied first, and the
-    last element is applied finally.)
+    last element is applied last.)
 
     External functions are also addable. (See dearinsu_to_desu function of
-    SYNOPSIS section)
+    SYNOPSIS section.)
 
   normalize($text)
     normalizes $text.
@@ -93,6 +86,8 @@ AUTHOR
     pawa <pawapawa@cpan.org>
 
 SEE ALSO
+    <http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html>
+
 LICENSE
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
