@@ -26,9 +26,8 @@ my $normalizer = Lingua::JA::NormalizeText->new(qw/lc/);
 isa_ok($normalizer, 'Lingua::JA::NormalizeText');
 
 my $result;
-warning_like { $result = $normalizer->normalize($result); } qr/lc/,
-'normalize uninitialized value';
-is($result, '', 'result of normalizing uninitialized text');
+$result = $normalizer->normalize($result);
+is($result, undef, 'result of normalizing uninitialized text');
 
 $result = $normalizer->normalize('');
 is($result, '', 'result of normalizing empty text');

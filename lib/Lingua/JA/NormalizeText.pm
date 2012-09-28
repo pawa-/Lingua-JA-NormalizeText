@@ -66,6 +66,7 @@ sub normalize
 {
     my ($self, $text) = @_;
 
+    if (defined $text)
     {
         no strict 'refs';
         $text = $_->($text) for @{ $self->{converters} };
