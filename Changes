@@ -1,5 +1,11 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.10    Fri, 28 Sep 2012 09:17:33 +0900
+        - added old2new_kanji option
+        - renamed modernize_kana_usage old2new_kana
+        - improved unify_3dots option
+        - improved tests
+
 0.06    Thu, 14 Jun 2012 10:42:43 +0900
         - fixed nl2space test for Windows
 
