@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.11    Fri, 28 Sep 2012 18:28:31 +0900
+        - fixed the handling of uninitialized value
+
 0.10    Fri, 28 Sep 2012 09:17:33 +0900
         - added old2new_kanji option
         - renamed modernize_kana_usage old2new_kana
