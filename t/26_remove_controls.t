@@ -47,4 +47,6 @@ for my $dec (
     else { is($chara, '', "\\p{Cntrl} $hex"); }
 }
 
+is(remove_controls("あ\x{0000}あ"), "ああ");
+
 done_testing;

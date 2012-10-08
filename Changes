@@ -1,5 +1,9 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.12    Mon, 08 Oct 2012 23:38:03 +0900
+        - added remove_controls option
+        - added tab2space option
+
 0.11    Fri, 28 Sep 2012 18:28:31 +0900
         - fixed the handling of uninitialized value
 

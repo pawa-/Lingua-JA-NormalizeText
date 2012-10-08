@@ -12,7 +12,7 @@ use HTML::Entities     ();
 use HTML::Scrubber     ();
 use Lingua::JA::Regular::Unicode ();
 
-our $VERSION     = '0.11';
+our $VERSION     = '0.12';
 our @EXPORT      = qw();
 our @EXPORT_OK   = qw(nfkc nfkd nfc nfd decode_entities strip_html
 alnum_z2h alnum_h2z space_z2h space_h2z katakana_z2h katakana_h2z
@@ -138,7 +138,7 @@ __END__
 
 =head1 NAME
 
-Lingua::JA::NormalizeText - text normalizer
+Lingua::JA::NormalizeText - Text Normalizer
 
 =head1 SYNOPSIS
 
@@ -216,13 +216,23 @@ The following options are available.
   remove_tail_space      ああ(space)(space)  ああ
   old2new_kana           ゐヰゑヱ            いイえエ
   old2new_kanji          亞逸鬭              亜逸闘
+  tab2space              (tab)(tab)          (space)(space)
+  remove_controls        あ\x{0000}あ        ああ
 
-The order these options are applied is according to the order of
+The order in which these options are applied is according to the order of
 the elements of @options.
 (i.e., The first element is applied first, and the last element is applied last.)
 
 External functions are also addable.
 (See dearinsu_to_desu function of SYNOPSIS section.)
+
+=head3 remove_controls
+
+Note that this option does not remove the following chars:
+
+  CHARACTER TABULATION(tab)
+  LINE FEED(LF)
+  CARRIAGE RETURN(CR)
 
 =head2 normalize($text)
 
@@ -234,7 +244,7 @@ pawa E<lt>pawapawa@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
-L<http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html>
+新旧字体表: L<http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html>
 
 =head1 LICENSE
 
