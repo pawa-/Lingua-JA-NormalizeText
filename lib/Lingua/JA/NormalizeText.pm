@@ -19,7 +19,8 @@ alnum_z2h alnum_h2z space_z2h space_h2z katakana_z2h katakana_h2z
 katakana2hiragana hiragana2katakana unify_3dots wave2tilde tilde2wave
 wavetilde2long wave2long tilde2long fullminus2long dashes2long
 drawing_lines2long unify_long_repeats nl2space unify_long_spaces
-remove_head_space remove_tail_space old2new_kana old2new_kanji);
+remove_head_space remove_tail_space old2new_kana old2new_kanji
+tab2space remove_controls);
 
 our %EXPORT_TAGS = ( all => [ @EXPORT, @EXPORT_OK ] );
 
@@ -96,8 +97,8 @@ sub katakana_h2z      { Lingua::JA::Regular::Unicode::katakana_h2z(shift);      
 sub katakana2hiragana { Lingua::JA::Regular::Unicode::katakana2hiragana(shift); }
 sub hiragana2katakana { Lingua::JA::Regular::Unicode::hiragana2katakana(shift); }
 
-sub unify_3dots     { local $_ = shift; s/\.{2,}/…/g; s/｡{2,}/…/g; s/。{2,}/…/g; s/･{2,}/…/g; s/・{2,}/…/g; s/．{2,}/…/g; tr/‥/…/; tr/…/…/s; $_; }
-#sub unify_3dots     { local $_ = shift; s/(?:\.{2,}|。{2,}|・{2,}|．{2,})/…/g; $_; } slower!
+sub unify_3dots  { local $_ = shift; s/\.{2,}/…/g; s/｡{2,}/…/g; s/。{2,}/…/g; s/･{2,}/…/g; s/・{2,}/…/g; s/．{2,}/…/g; tr/‥/…/; tr/…/…/s; $_; }
+#sub unify_3dots  { local $_ = shift; s/(?:\.{2,}|。{2,}|・{2,}|．{2,})/…/g; $_; } slower!
 
 sub wave2tilde           { local $_ = shift; tr/\x{301C}/\x{FF5E}/; $_; }
 sub tilde2wave           { local $_ = shift; tr/\x{FF5E}/\x{301C}/; $_; }
@@ -113,6 +114,14 @@ sub unify_long_spaces    { local $_ = shift; tr/\x{0020}/\x{0020}/s; tr/\x{3000}
 sub remove_head_space    { local $_ = shift; s/^\s+//gm; $_; }
 sub remove_tail_space    { local $_ = shift; s/\s+$//gm; $_; }
 sub old2new_kana         { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; $_; }
+sub tab2space            { local $_ = shift; tr/\x{0009}/\x{0020}/; $_; }
+
+sub remove_controls
+{
+    local $_ = shift;
+    tr/\x{0000}\x{0001}\x{0002}\x{0003}\x{0004}\x{0005}\x{0006}\x{0007}\x{0008}\x{000B}\x{000C}\x{000E}\x{000F}\x{0010}\x{0011}\x{0012}\x{0013}\x{0014}\x{0015}\x{0016}\x{0017}\x{0018}\x{0019}\x{001A}\x{001B}\x{001C}\x{001D}\x{001E}\x{001F}\x{007F}\x{0080}\x{0081}\x{0082}\x{0083}\x{0084}\x{0085}\x{0086}\x{0087}\x{0088}\x{0089}\x{008A}\x{008B}\x{008C}\x{008D}\x{008E}\x{008F}\x{0090}\x{0091}\x{0092}\x{0093}\x{0094}\x{0095}\x{0096}\x{0097}\x{0098}\x{0099}\x{009A}\x{009B}\x{009C}\x{009D}\x{009E}\x{009F}//d;
+    $_;
+}
 
 sub old2new_kanji
 {
