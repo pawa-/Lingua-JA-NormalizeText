@@ -10,7 +10,7 @@ binmode Test::More->builder->$_ => ':utf8'
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/
     strip_html nl2space unify_long_spaces
-    remove_head_space remove_tail_space
+    ltrim rtrim
 /);
 
 my $html = do { local $/; <DATA> };
