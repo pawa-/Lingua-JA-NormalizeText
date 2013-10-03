@@ -97,7 +97,7 @@ sub katakana_h2z      { Lingua::JA::Regular::Unicode::katakana_h2z(shift);      
 sub katakana2hiragana { Lingua::JA::Regular::Unicode::katakana2hiragana(shift); }
 sub hiragana2katakana { Lingua::JA::Regular::Unicode::hiragana2katakana(shift); }
 
-sub unify_3dots  { local $_ = shift; s/\.{2,}/…/g; s/｡{2,}/…/g; s/。{2,}/…/g; s/･{2,}/…/g; s/・{2,}/…/g; s/．{2,}/…/g; tr/‥/…/; tr/…/…/s; $_; }
+sub unify_3dots { local $_ = shift; s/\.{2,}/……/g; s/｡{2,}/……/g; s/。{2,}/……/g; s/･{2,}/……/g; s/・{2,}/……/g; s/．{2,}/……/g; tr/‥/…/; $_; }
 #sub unify_3dots  { local $_ = shift; s/(?:\.{2,}|。{2,}|・{2,}|．{2,})/…/g; $_; } slower!
 
 sub wave2tilde           { local $_ = shift; tr/\x{301C}/\x{FF5E}/; $_; }
