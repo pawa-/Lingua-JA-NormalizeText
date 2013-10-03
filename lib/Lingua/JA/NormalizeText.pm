@@ -19,8 +19,8 @@ alnum_z2h alnum_h2z space_z2h space_h2z katakana_z2h katakana_h2z
 katakana2hiragana hiragana2katakana unify_3dots wave2tilde tilde2wave
 wavetilde2long wave2long tilde2long fullminus2long dashes2long
 drawing_lines2long unify_long_repeats nl2space unify_long_spaces
-ltrim rtrim old2new_kana old2new_kanji
-tab2space remove_controls);
+trim ltrim rtrim old2new_kana old2new_kanji tab2space remove_controls
+);
 
 our %EXPORT_TAGS = ( all => [ @EXPORT, @EXPORT_OK ] );
 
@@ -111,6 +111,7 @@ sub drawing_lines2long   { local $_ = shift; tr/\x{2500}\x{2501}\x{254C}\x{254D}
 sub unify_long_repeats   { local $_ = shift; tr/\x{30FC}/\x{30FC}/s; $_; }
 sub nl2space             { local $_ = shift; s/\x{000D}\x{000A}/ /g; tr/\x{000D}\x{000A}/ /; $_; }
 sub unify_long_spaces    { local $_ = shift; tr/\x{0020}/\x{0020}/s; tr/\x{3000}/\x{3000}/s; $_; }
+sub trim                 { local $_ = shift; s/^\s+//gm; s/\s+$//gm; $_; }
 sub ltrim                { local $_ = shift; s/^\s+//gm; $_; }
 sub rtrim                { local $_ = shift; s/\s+$//gm; $_; }
 sub old2new_kana         { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; $_; }
