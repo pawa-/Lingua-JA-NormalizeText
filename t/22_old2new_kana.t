@@ -11,6 +11,6 @@ binmode Test::More->builder->$_ => ':utf8'
 my $normalizer = Lingua::JA::NormalizeText->new(qw/old2new_kana/);
 
 is(old2new_kana('ヱヴァンゲリオン'), 'エヴァンゲリオン');
-is($normalizer->normalize('ゐヰゑヱ' x 2), 'いイえエ' x 2);
+is($normalizer->normalize('ゐヰゑヱヸヹ' x 2), 'いイえエイ゙エ゙' x 2);
 
 done_testing;

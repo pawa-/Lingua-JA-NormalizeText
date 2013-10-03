@@ -114,7 +114,7 @@ sub unify_long_spaces    { local $_ = shift; tr/\x{0020}/\x{0020}/s; tr/\x{3000}
 sub trim                 { local $_ = shift; s/^\s+//gm; s/\s+$//gm; $_; }
 sub ltrim                { local $_ = shift; s/^\s+//gm; $_; }
 sub rtrim                { local $_ = shift; s/\s+$//gm; $_; }
-sub old2new_kana         { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; $_; }
+sub old2new_kana         { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; s/ヸ/イ\x{3099}/g; s/ヹ/エ\x{3099}/g; $_; }
 sub tab2space            { local $_ = shift; tr/\x{0009}/\x{0020}/; $_; }
 
 sub remove_controls
