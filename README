@@ -36,42 +36,47 @@ METHODS
 
     The following options are available:
 
-      OPTION                 SAMPLE INPUT        OUTPUT FOR SAMPLE INPUT
-      ---------------------  ------------------  -----------------------
-      lc                     DdD                 ddd
-      uc                     DdD                 DDD
-      nfkc                   ㌦                  ドル (length: 2)
-      nfkd                   ㌦                  ドル (length: 3)
+      OPTION                 SAMPLE INPUT           OUTPUT FOR SAMPLE INPUT
+      ---------------------  ---------------------  -----------------------
+      lc                     DdD                    ddd
+      uc                     DdD                    DDD
+      nfkc                   ㌦                     ドル (length: 2)
+      nfkd                   ㌦                     ドル (length: 3)
       nfc
       nfd
-      decode_entities        &hearts;            ♥
-      strip_html             <em>あ</em>             あ    
-      alnum_z2h              ＡＢＣ１２３        ABC123
-      alnum_h2z              ABC123              ＡＢＣ１２３
+      decode_entities        &hearts;               ♥
+      strip_html             <em>あ</em>                あ    
+      alnum_z2h              ＡＢＣ１２３           ABC123
+      alnum_h2z              ABC123                 ＡＢＣ１２３
       space_z2h
       space_h2z
-      katakana_z2h           ハァハァ            ﾊｧﾊｧ
-      katakana_h2z           ｽｰﾊｰｽｰﾊｰ            スーハースーハー
-      katakana2hiragana      パンツ              ぱんつ
-      hiragana2katakana      ぱんつ              パンツ
-      wave2tilde             〜                  ～
-      tilde2wave             ～                  〜
-      wavetilde2long         〜, ～              ー
-      wave2long              〜                  ー
-      tilde2long             ～                  ー
-      fullminus2long         −                   ー
-      dashes2long            —                   ー
-      drawing_lines2long     ─                   ー
-      unify_long_repeats     ヴァーーー          ヴァー
-      nl2space               (new line)          (space)
-      unify_long_spaces      (space)(space)      (space)
-      trim                   (space)あ(space)    あ
-      ltrim                  (space)あ(space)    あ(space)
-      rtrim                  ああ(space)(space)  ああ
-      old2new_kana           ゐヰゑヱヸヹ        いイえエイ゙エ゙
-      old2new_kanji          亞逸鬭              亜逸闘
-      tab2space              (tab)(tab)          (space)(space)
-      remove_controls        あ\x{0000}あ        ああ
+      katakana_z2h           ハァハァ               ﾊｧﾊｧ
+      katakana_h2z           ｽｰﾊｰｽｰﾊｰ               スーハースーハー
+      katakana2hiragana      パンツ                 ぱんつ
+      hiragana2katakana      ぱんつ                 パンツ
+      wave2tilde             〜                     ～
+      tilde2wave             ～                     〜
+      wavetilde2long         〜, ～                 ー
+      wave2long              〜                     ー
+      tilde2long             ～                     ー
+      fullminus2long         −                      ー
+      dashes2long            —                      ー
+      drawing_lines2long     ─                      ー
+      unify_long_repeats     ヴァーーー             ヴァー
+      nl2space               (LF)(CR)(CRLF}         (space)(space)(space)
+      unify_nl               (LF)(CR)(CRLF)         \n\n\n
+      unify_long_spaces      あ(space)(space)あ     あ(space)あ
+      unify_whitespaces      \x{00A0}               (space)
+      trim                   (space)あ(space)       あ
+      ltrim                  (space)あ(space)       あ(space)
+      rtrim                  ああ(space)(space)     ああ
+      old2new_kana           ゐヰゑヱヸヹ           いイえエイ゙エ゙
+      old2new_kanji          亞逸鬭                 亜逸闘
+      tab2space              (tab)(tab)             (space)(space)
+      remove_controls        あ\x{0000}あ           ああ
+      dakuon_normalize       さ\x{3099}             ざ
+      handakuon_normalize    は\x{309A}             ぱ
+      all_dakuon_normalize   さ\x{3099}は\x{309A}   ざぱ
 
     The order in which these options are applied is according to the order
     of the elements of @options. (i.e., The first element is applied first,
@@ -84,15 +89,47 @@ METHODS
     Note that this option does not convert hyphens into long.
 
    unify_long_spaces
-    Note that this option unifies only SPACE(\x{0020}) and IDEOGRAPHIC
-    SPACE(\x{3000}).
+    Note that this option unifies only SPACE(U+0020) and IDEOGRAPHIC
+    SPACE(U+3000).
 
    remove_controls
     Note that this option does not remove the following chars:
 
-      CHARACTER TABULATION(horizontal tabulation)
-      LINE FEED(LF)
-      CARRIAGE RETURN(CR)
+      CHARACTER TABULATION
+      LINE FEED
+      CARRIAGE RETURN
+
+   unify_whitespaces
+    This option converts following chars into SPACE(U+0020).
+
+      LINE TABULATION
+      FORM FEED
+      NEXT LINE
+      NO-BREAK SPACE
+      OGHAM SPACE MARK
+      MONGOLIAN VOWEL SEPARATOR
+      EN QUAD
+      EM QUAD
+      EN SPACE
+      EM SPACE
+      THREE-PER-EM SPACE
+      FOUR-PER-EM SPACE
+      SIX-PER-EM SPACE
+      FIGURE SPACE
+      PUNCTUATION SPACE
+      THIN SPACE
+      HAIR SPACE
+      LINE SEPARATOR
+      PARAGRAPH SEPARATOR
+      NARROW NO-BREAK SPACE
+      MEDIUM MATHEMATICAL SPACE
+
+    Note that this does not convert following chars:
+
+      CHARACTER TABULATION
+      LINE FEED
+      CARRIAGE RETURN
+      IDEOGRAPHIC SPACE
 
   normalize($text)
     normalizes $text.
@@ -104,6 +141,8 @@ SEE ALSO
     新旧字体表: <http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html>
 
     Lingua::JA::Regular::Unicode
+
+    Lingua::JA::Dakuon
 
     Lingua::JA::Moji
 
