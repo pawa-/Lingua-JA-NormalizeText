@@ -81,7 +81,7 @@ METHODS
     External functions are also addable. (See dearinsu_to_desu function of
     the SYNOPSIS section.)
 
-   dashed2long
+   dashes2long
     Note that this option does not convert hyphens into long.
 
    unify_long_spaces
