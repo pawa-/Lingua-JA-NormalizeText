@@ -156,13 +156,11 @@ Lingua::JA::NormalizeText - Text Normalizer
 
 # or
 
-  use Lingua::JA::NormalizeText qw/nfkc decode_entities/;
+  use Lingua::JA::NormalizeText qw/old2new_kanji/;
   use utf8;
 
-  my $text = '㈱㋰㋫㋫&hearts;';
-  print decode_entities( nfkc($text) );
-  # -> (株)ムフフ♥
-
+  print old2new_kanji('惡の華');
+  # -> 悪の華
 
 
 =head1 DESCRIPTION
