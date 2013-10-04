@@ -54,7 +54,6 @@ METHODS
       katakana_h2z           ｽｰﾊｰｽｰﾊｰ            スーハースーハー
       katakana2hiragana      パンツ              ぱんつ
       hiragana2katakana      ぱんつ              パンツ
-      unify_3dots            はぁ。。。          はぁ……
       wave2tilde             〜                  ～
       tilde2wave             ～                  〜
       wavetilde2long         〜, ～              ー
@@ -94,9 +93,6 @@ METHODS
       CHARACTER TABULATION(horizontal tabulation)
       LINE FEED(LF)
       CARRIAGE RETURN(CR)
-
-   unify_3dots
-    Note that this option is EXPERIMENTAL.
 
   normalize($text)
     normalizes $text.
