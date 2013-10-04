@@ -220,7 +220,7 @@ the elements of @options.
 External functions are also addable.
 (See dearinsu_to_desu function of the SYNOPSIS section.)
 
-=head3 dashed2long
+=head3 dashes2long
 
 Note that this option does not convert hyphens into long.
 
