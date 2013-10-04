@@ -190,7 +190,6 @@ The following options are available:
   katakana_h2z           ｽｰﾊｰｽｰﾊｰ            スーハースーハー
   katakana2hiragana      パンツ              ぱんつ
   hiragana2katakana      ぱんつ              パンツ
-  unify_3dots            はぁ。。。          はぁ……
   wave2tilde             〜                  ～
   tilde2wave             ～                  〜
   wavetilde2long         〜, ～              ー
@@ -232,10 +231,6 @@ Note that this option does not remove the following chars:
   CHARACTER TABULATION(horizontal tabulation)
   LINE FEED(LF)
   CARRIAGE RETURN(CR)
-
-=head3 unify_3dots
-
-Note that this option is EXPERIMENTAL.
 
 =head2 normalize($text)
 
