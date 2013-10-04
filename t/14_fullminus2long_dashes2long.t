@@ -19,4 +19,7 @@ is(fullminus2long($minus_dash_long x 2), "$long$dash$long"  x 2);
 is(dashes2long($minus_dash_long x 2),    "$minus$long$long" x 2);
 is($normalizer->normalize($minus_dash_long x 2), $long x 6);
 
+my $dashes = "\x{2012}\x{2013}\x{2014}\x{2015}";
+is(dashes2long($dashes), $long x length $dashes);
+
 done_testing;
