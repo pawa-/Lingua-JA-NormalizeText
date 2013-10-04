@@ -15,6 +15,7 @@ binmode Test::More->builder->$_ => ':utf8'
 #is(nfd(undef), undef);
 #is(decode_entities(undef), undef);
 #is(strip_html(undef), undef);
+=begin
 is(alnum_z2h(undef), undef);
 is(alnum_h2z(undef), undef);
 is(space_z2h(undef), undef);
@@ -23,6 +24,8 @@ is(katakana_h2z(undef), undef);
 is(katakana_z2h(undef), undef);
 is(katakana2hiragana(undef), undef);
 is(hiragana2katakana(undef), undef);
+=end
+=cut
 is(wave2tilde(undef), undef);
 is(tilde2wave(undef), undef);
 is(wavetilde2long(undef), undef);
@@ -43,10 +46,14 @@ is(old2new_kana(undef), undef);
 is(old2new_kanji(undef), undef);
 is(tab2space(undef), undef);
 is(remove_controls(undef), undef);
+=begin
 is(dakuon_normalize(undef), undef);
 is(handakuon_normalize(undef), undef);
 is(all_dakuon_normalize(undef), undef);
+=end
+=cut
 
+=begin
 is(nfkc(''), '');
 is(nfkd(''), '');
 is(nfc(''), '');
@@ -61,6 +68,8 @@ is(katakana_h2z(''), '');
 is(katakana_z2h(''), '');
 is(katakana2hiragana(''), '');
 is(hiragana2katakana(''), '');
+=end
+=cut
 is(wave2tilde(''), '');
 is(tilde2wave(''), '');
 is(wavetilde2long(''), '');
@@ -81,8 +90,11 @@ is(old2new_kana(''), '');
 is(old2new_kanji(''), '');
 is(tab2space(''), '');
 is(remove_controls(''), '');
+=begin
 is(dakuon_normalize(''), '');
 is(handakuon_normalize(''), '');
 is(all_dakuon_normalize(''), '');
+=end
+=cut
 
 done_testing;
