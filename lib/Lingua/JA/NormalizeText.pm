@@ -116,13 +116,7 @@ sub rtrim                { local $_ = shift; s/\s+$//gm; $_; }
 sub nl2space             { local $_ = shift; s/\x{000D}\x{000A}/ /g; tr/\x{000D}\x{000A}/ /; $_; }
 sub tab2space            { local $_ = shift; tr/\x{0009}/\x{0020}/; $_; }
 sub old2new_kana         { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; s/ヸ/イ\x{3099}/g; s/ヹ/エ\x{3099}/g; $_; }
-
-sub remove_controls
-{
-    local $_ = shift;
-    tr/\x{0000}-\x{0008}\x{000B}\x{000C}\x{000E}-\x{001F}\x{007F}-\x{009F}//d;
-    $_;
-}
+sub remove_controls      { local $_ = shift; tr/\x{0000}-\x{0008}\x{000B}\x{000C}\x{000E}-\x{001F}\x{007F}-\x{009F}//d; $_; }
 
 sub old2new_kanji
 {
