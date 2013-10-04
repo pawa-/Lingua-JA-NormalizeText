@@ -3,7 +3,6 @@ use warnings;
 use Lingua::JA::NormalizeText;
 use Test::More;
 use Test::Fatal;
-use Test::Warn;
 
 
 my @subs = (qw/new normalize/, @Lingua::JA::NormalizeText::EXPORT_OK);
