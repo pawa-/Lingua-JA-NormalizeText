@@ -175,7 +175,7 @@ Lingua::JA::NormalizeText normalizes text.
 
 Creates a new Lingua::JA::NormalizeText instance.
 
-The following options are available.
+The following options are available:
 
   OPTION                 SAMPLE INPUT        OUTPUT FOR SAMPLE INPUT
   ---------------------  ------------------  -----------------------
@@ -195,7 +195,7 @@ The following options are available.
   katakana_h2z           ｽｰﾊｰｽｰﾊｰ            スーハースーハー
   katakana2hiragana      パンツ              ぱんつ
   hiragana2katakana      ぱんつ              パンツ
-  unify_3dots            はぁ。。。          はぁ…
+  unify_3dots            はぁ。。。          はぁ……
   wave2tilde             〜                  ～
   tilde2wave             ～                  〜
   wavetilde2long         〜, ～              ー
@@ -207,9 +207,10 @@ The following options are available.
   unify_long_repeats     ヴァーーー          ヴァー
   nl2space               (new line)          (space)
   unify_long_spaces      (space)(space)      (space)
-  remove_head_space      (space)あ(space)あ  あ(space)あ
-  remove_tail_space      ああ(space)(space)  ああ
-  old2new_kana           ゐヰゑヱ            いイえエ
+  trim                   (space)あ(space)    あ
+  ltrim                  (space)あ(space)    あ(space)
+  rtrim                  ああ(space)(space)  ああ
+  old2new_kana           ゐヰゑヱヸヹ        いイえエイ゙エ゙
   old2new_kanji          亞逸鬭              亜逸闘
   tab2space              (tab)(tab)          (space)(space)
   remove_controls        あ\x{0000}あ        ああ
@@ -219,15 +220,27 @@ the elements of @options.
 (i.e., The first element is applied first, and the last element is applied last.)
 
 External functions are also addable.
-(See dearinsu_to_desu function of SYNOPSIS section.)
+(See dearinsu_to_desu function of the SYNOPSIS section.)
+
+=head3 dashed2long
+
+Note that this option does not convert hyphens into long.
+
+=head3 unify_long_spaces
+
+Note that this option unifies only SPACE(\x{0020}) and IDEOGRAPHIC SPACE(\x{3000}).
 
 =head3 remove_controls
 
 Note that this option does not remove the following chars:
 
-  CHARACTER TABULATION(tab)
+  CHARACTER TABULATION(horizontal tabulation)
   LINE FEED(LF)
   CARRIAGE RETURN(CR)
+
+=head3 unify_3dots
+
+Note that this option is EXPERIMENTAL.
 
 =head2 normalize($text)
 
@@ -240,6 +253,16 @@ pawa E<lt>pawapawa@cpan.orgE<gt>
 =head1 SEE ALSO
 
 新旧字体表: L<http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html>
+
+L<Lingua::JA::Regular::Unicode>
+
+L<Lingua::JA::Moji>
+
+L<Unicode::Normalize>
+
+L<HTML::Entities>
+
+L<HTML::Scrubber>
 
 =head1 LICENSE
 
