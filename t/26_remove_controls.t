@@ -10,7 +10,7 @@ binmode Test::More->builder->$_ => ':utf8'
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/remove_controls/);
 
-my @special_chars = ( "\t", chr hex('000A'), chr hex('000D') );
+my @skip_chars = ( "\t", chr hex('000A'), chr hex('000D') );
 my @not_controls  = ( chr hex('0020'), chr hex('00A0') );
 
 for my $dec (
@@ -23,7 +23,7 @@ for my $dec (
     my $chara = chr $dec;
     my $hex   = '\x{' . sprintf("%04X", $dec) . '}';
 
-    if ( grep { $chara eq $_ } (@special_chars, @not_controls) )
+    if ( grep { $chara eq $_ } (@skip_chars, @not_controls) )
     {
         is(remove_controls($chara), $chara, $hex);
         is(remove_controls($chara x 2), $chara x 2, $hex);

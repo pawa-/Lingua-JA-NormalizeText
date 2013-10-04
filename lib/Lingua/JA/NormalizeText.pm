@@ -109,18 +109,18 @@ sub fullminus2long       { local $_ = shift; tr/\x{2212}/\x{30FC}/; $_; }
 sub dashes2long          { local $_ = shift; tr/\x{2012}\x{2013}\x{2014}\x{2015}/\x{30FC}/; $_; }
 sub drawing_lines2long   { local $_ = shift; tr/\x{2500}\x{2501}\x{254C}\x{254D}\x{2574}\x{2576}\x{2578}\x{257A}/\x{30FC}/; $_; }
 sub unify_long_repeats   { local $_ = shift; tr/\x{30FC}/\x{30FC}/s; $_; }
-sub nl2space             { local $_ = shift; s/\x{000D}\x{000A}/ /g; tr/\x{000D}\x{000A}/ /; $_; }
 sub unify_long_spaces    { local $_ = shift; tr/\x{0020}/\x{0020}/s; tr/\x{3000}/\x{3000}/s; $_; }
 sub trim                 { local $_ = shift; s/^\s+//gm; s/\s+$//gm; $_; }
 sub ltrim                { local $_ = shift; s/^\s+//gm; $_; }
 sub rtrim                { local $_ = shift; s/\s+$//gm; $_; }
-sub old2new_kana         { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; s/ヸ/イ\x{3099}/g; s/ヹ/エ\x{3099}/g; $_; }
+sub nl2space             { local $_ = shift; s/\x{000D}\x{000A}/ /g; tr/\x{000D}\x{000A}/ /; $_; }
 sub tab2space            { local $_ = shift; tr/\x{0009}/\x{0020}/; $_; }
+sub old2new_kana         { local $_ = shift; tr/ゐヰゑヱ/いイえエ/; s/ヸ/イ\x{3099}/g; s/ヹ/エ\x{3099}/g; $_; }
 
 sub remove_controls
 {
     local $_ = shift;
-    tr/\x{0000}\x{0001}\x{0002}\x{0003}\x{0004}\x{0005}\x{0006}\x{0007}\x{0008}\x{000B}\x{000C}\x{000E}\x{000F}\x{0010}\x{0011}\x{0012}\x{0013}\x{0014}\x{0015}\x{0016}\x{0017}\x{0018}\x{0019}\x{001A}\x{001B}\x{001C}\x{001D}\x{001E}\x{001F}\x{007F}\x{0080}\x{0081}\x{0082}\x{0083}\x{0084}\x{0085}\x{0086}\x{0087}\x{0088}\x{0089}\x{008A}\x{008B}\x{008C}\x{008D}\x{008E}\x{008F}\x{0090}\x{0091}\x{0092}\x{0093}\x{0094}\x{0095}\x{0096}\x{0097}\x{0098}\x{0099}\x{009A}\x{009B}\x{009C}\x{009D}\x{009E}\x{009F}//d;
+    tr/\x{0000}-\x{0008}\x{000B}\x{000C}\x{000E}-\x{001F}\x{007F}-\x{009F}//d;
     $_;
 }
 
