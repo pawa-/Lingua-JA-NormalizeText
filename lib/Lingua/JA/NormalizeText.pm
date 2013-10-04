@@ -16,7 +16,7 @@ our $VERSION     = '0.12';
 our @EXPORT      = qw();
 our @EXPORT_OK   = qw(nfkc nfkd nfc nfd decode_entities strip_html
 alnum_z2h alnum_h2z space_z2h space_h2z katakana_z2h katakana_h2z
-katakana2hiragana hiragana2katakana unify_3dots wave2tilde tilde2wave
+katakana2hiragana hiragana2katakana wave2tilde tilde2wave
 wavetilde2long wave2long tilde2long fullminus2long dashes2long
 drawing_lines2long unify_long_repeats nl2space unify_long_spaces
 trim ltrim rtrim old2new_kana old2new_kanji tab2space remove_controls
@@ -27,7 +27,7 @@ our %EXPORT_TAGS = ( all => [ @EXPORT, @EXPORT_OK ] );
 my %AVAILABLE_OPTS;
 @AVAILABLE_OPTS{ (qw/lc uc/, @EXPORT_OK) } = ();
 
-my $SCRUBBER = HTML::Scrubber->new;
+our $SCRUBBER = HTML::Scrubber->new;
 
 
 sub new
@@ -96,9 +96,6 @@ sub katakana_z2h      { Lingua::JA::Regular::Unicode::katakana_z2h(shift);      
 sub katakana_h2z      { Lingua::JA::Regular::Unicode::katakana_h2z(shift);      }
 sub katakana2hiragana { Lingua::JA::Regular::Unicode::katakana2hiragana(shift); }
 sub hiragana2katakana { Lingua::JA::Regular::Unicode::hiragana2katakana(shift); }
-
-sub unify_3dots { local $_ = shift; s/\.{2,}/……/g; s/｡{2,}/……/g; s/。{2,}/……/g; s/･{2,}/……/g; s/・{2,}/……/g; s/．{2,}/……/g; tr/‥/…/; $_; }
-#sub unify_3dots  { local $_ = shift; s/(?:\.{2,}|。{2,}|・{2,}|．{2,})/…/g; $_; } slower!
 
 sub wave2tilde           { local $_ = shift; tr/\x{301C}/\x{FF5E}/; $_; }
 sub tilde2wave           { local $_ = shift; tr/\x{FF5E}/\x{301C}/; $_; }
