@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.21    Sat, 05 Oct 2013 17:44:19 +0900
+        - Fixed the structure of documentation
+
 0.20    Sat, 05 Oct 2013 07:27:24 +0900
         - Added unify_nl, unify_whitespaces, dakuon_normalize, handakuon_normalize
         and all_dakuon_normalize options
