@@ -230,15 +230,23 @@ the elements of @options.
 External functions are also addable.
 (See dearinsu_to_desu function of the SYNOPSIS section.)
 
-=head3 dashes2long
+
+=head2 normalize($text)
+
+normalizes $text.
+
+
+=head1 OPTIONS
+
+=head2 dashes2long
 
 Note that this option does not convert hyphens into long.
 
-=head3 unify_long_spaces
+=head2 unify_long_spaces
 
 Note that this option unifies only SPACE(U+0020) and IDEOGRAPHIC SPACE(U+3000).
 
-=head3 remove_controls
+=head2 remove_controls
 
 Note that this option does not remove the following chars:
 
@@ -247,9 +255,9 @@ Note that this option does not remove the following chars:
   CARRIAGE RETURN
 
 
-=head3 unify_whitespaces
+=head2 unify_whitespaces
 
-This option converts following chars into SPACE(U+0020).
+This option converts the following chars into SPACE(U+0020).
 
   LINE TABULATION
   FORM FEED
@@ -273,16 +281,13 @@ This option converts following chars into SPACE(U+0020).
   NARROW NO-BREAK SPACE
   MEDIUM MATHEMATICAL SPACE
 
-Note that this does not convert following chars:
+Note that this does not convert the following chars:
 
   CHARACTER TABULATION
   LINE FEED
   CARRIAGE RETURN
   IDEOGRAPHIC SPACE
 
-=head2 normalize($text)
-
-normalizes $text.
 
 =head1 AUTHOR
 

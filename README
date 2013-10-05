@@ -85,22 +85,26 @@ METHODS
     External functions are also addable. (See dearinsu_to_desu function of
     the SYNOPSIS section.)
 
-   dashes2long
+  normalize($text)
+    normalizes $text.
+
+OPTIONS
+  dashes2long
     Note that this option does not convert hyphens into long.
 
-   unify_long_spaces
+  unify_long_spaces
     Note that this option unifies only SPACE(U+0020) and IDEOGRAPHIC
     SPACE(U+3000).
 
-   remove_controls
+  remove_controls
     Note that this option does not remove the following chars:
 
       CHARACTER TABULATION
       LINE FEED
       CARRIAGE RETURN
 
-   unify_whitespaces
-    This option converts following chars into SPACE(U+0020).
+  unify_whitespaces
+    This option converts the following chars into SPACE(U+0020).
 
       LINE TABULATION
       FORM FEED
@@ -124,15 +128,12 @@ METHODS
       NARROW NO-BREAK SPACE
       MEDIUM MATHEMATICAL SPACE
 
-    Note that this does not convert following chars:
+    Note that this does not convert the following chars:
 
       CHARACTER TABULATION
       LINE FEED
       CARRIAGE RETURN
       IDEOGRAPHIC SPACE
-
-  normalize($text)
-    normalizes $text.
 
 AUTHOR
     pawa <pawapawa@cpan.org>
