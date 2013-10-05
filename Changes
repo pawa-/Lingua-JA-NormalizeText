@@ -1,5 +1,17 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.20    Sat, 05 Oct 2013 07:27:24 +0900
+        - Added unify_nl, unify_whitespaces, dakuon_normalize, handakuon_normalize
+        and all_dakuon_normalize options
+        - Replaced remove_(head|tail)_space options with trim, ltrim and rtrim options
+        - Removed unify_3dots option
+        - Added dependency on Lingua::JA::Dakuon
+        - Updated dependency on Lingua::JA::Regular::Unicode from 0.09 to 0.11
+        - Fixed unify_long_spaces option
+        - Added 'ヸ and ヹ to old2new_kana option
+        - Return undef if argument is undef
+        - Compressed code
+
 0.12    Mon, 08 Oct 2012 23:38:03 +0900
         - added remove_controls option
         - added tab2space option

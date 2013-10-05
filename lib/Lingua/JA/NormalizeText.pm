@@ -13,7 +13,7 @@ use HTML::Scrubber     ();
 use Lingua::JA::Regular::Unicode ();
 use Lingua::JA::Dakuon ();
 
-our $VERSION   = '0.12';
+our $VERSION   = '0.20';
 our @EXPORT    = qw();
 our @EXPORT_OK = qw(nfkc nfkd nfc nfd decode_entities strip_html
 alnum_z2h alnum_h2z space_z2h space_h2z katakana_z2h katakana_h2z
@@ -113,7 +113,7 @@ sub dashes2long          { local $_ = shift; return unless defined $_; tr/\x{201
 sub drawing_lines2long   { local $_ = shift; return unless defined $_; tr/\x{2500}\x{2501}\x{254C}\x{254D}\x{2574}\x{2576}\x{2578}\x{257A}/\x{30FC}/; $_; }
 sub unify_long_repeats   { local $_ = shift; return unless defined $_; tr/\x{30FC}/\x{30FC}/s; $_; }
 sub unify_long_spaces    { local $_ = shift; return unless defined $_; tr/\x{0020}/\x{0020}/s; tr/\x{3000}/\x{3000}/s; s/[\x{0020}\x{3000}]{2,}/\x{0020}/g; $_; }
-sub unify_whitespaces    { local $_ = shift; return unless defined $_; tr/\x{000B}\x{000C}\x{0085}\x{00A0}\x{1680}\x{180E}\x{2000}\x{2001}\x{2002}\x{2003}\x{2004}\x{2005}\x{2006}\x{2007}\x{2008}\x{2009}\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}/\x{0020}/; $_; }
+sub unify_whitespaces    { local $_ = shift; return unless defined $_; tr/\x{000B}\x{000C}\x{0085}\x{00A0}\x{1680}\x{180E}\x{2000}-\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}/\x{0020}/; $_; }
 sub trim                 { local $_ = shift; return unless defined $_; s/^\s+//g; s/\s+$//g; $_; }
 sub ltrim                { local $_ = shift; return unless defined $_; s/^\s+//g; $_; }
 sub rtrim                { local $_ = shift; return unless defined $_; s/\s+$//g; $_; }
@@ -212,7 +212,7 @@ The following options are available:
   unify_nl               (LF)(CR)(CRLF)         \n\n\n
   unify_long_spaces      あ(space)(space)あ     あ(space)あ
   unify_whitespaces      \x{00A0}               (space)
-  trim                   (space)あ(space)       あ
+  trim                   (space)あ(space)あ(space)  あ(space)あ
   ltrim                  (space)あ(space)       あ(space)
   rtrim                  ああ(space)(space)     ああ
   old2new_kana           ゐヰゑヱヸヹ           いイえエイ゙エ゙

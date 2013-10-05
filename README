@@ -67,7 +67,7 @@ METHODS
       unify_nl               (LF)(CR)(CRLF)         \n\n\n
       unify_long_spaces      あ(space)(space)あ     あ(space)あ
       unify_whitespaces      \x{00A0}               (space)
-      trim                   (space)あ(space)       あ
+      trim                   (space)あ(space)あ(space)  あ(space)あ
       ltrim                  (space)あ(space)       あ(space)
       rtrim                  ああ(space)(space)     ああ
       old2new_kana           ゐヰゑヱヸヹ           いイえエイ゙エ゙
