@@ -97,11 +97,14 @@ OPTIONS
     SPACE(U+3000).
 
   remove_controls
-    Note that this option does not remove the following chars:
+    Note that this option does not remove the following characters:
 
       CHARACTER TABULATION
       LINE FEED
       CARRIAGE RETURN
+
+  remove_spaces
+      Note that this option removes only SPACE(U+0020) and IDEOGRAPHIC SPACE(U+3000).
 
   unify_whitespaces
     This option converts the following chars into SPACE(U+0020).

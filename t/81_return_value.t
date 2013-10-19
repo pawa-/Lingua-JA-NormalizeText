@@ -46,6 +46,7 @@ is(old2new_kana(undef), undef);
 is(old2new_kanji(undef), undef);
 is(tab2space(undef), undef);
 is(remove_controls(undef), undef);
+is(remove_spaces(undef), undef);
 =begin
 is(dakuon_normalize(undef), undef);
 is(handakuon_normalize(undef), undef);
@@ -90,6 +91,7 @@ is(old2new_kana(''), '');
 is(old2new_kanji(''), '');
 is(tab2space(''), '');
 is(remove_controls(''), '');
+is(remove_spaces(''), '');
 =begin
 is(dakuon_normalize(''), '');
 is(handakuon_normalize(''), '');

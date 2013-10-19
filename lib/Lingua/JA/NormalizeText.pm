@@ -21,8 +21,8 @@ katakana2hiragana hiragana2katakana wave2tilde tilde2wave
 wavetilde2long wave2long tilde2long fullminus2long dashes2long
 drawing_lines2long unify_long_repeats nl2space unify_long_spaces
 unify_whitespaces unify_nl trim ltrim rtrim old2new_kana old2new_kanji
-tab2space remove_controls dakuon_normalize handakuon_normalize
-all_dakuon_normalize);
+tab2space remove_controls remove_spaces dakuon_normalize
+handakuon_normalize all_dakuon_normalize);
 
 our %EXPORT_TAGS = ( all => [ @EXPORT, @EXPORT_OK ] );
 
@@ -122,6 +122,7 @@ sub unify_nl             { local $_ = shift; return unless defined $_; s/\x{000D
 sub tab2space            { local $_ = shift; return unless defined $_; tr/\x{0009}/\x{0020}/; $_; }
 sub old2new_kana         { local $_ = shift; return unless defined $_; tr/ゐヰゑヱ/いイえエ/; s/ヸ/イ\x{3099}/g; s/ヹ/エ\x{3099}/g; $_; }
 sub remove_controls      { local $_ = shift; return unless defined $_; tr/\x{0000}-\x{0008}\x{000B}\x{000C}\x{000E}-\x{001F}\x{007F}-\x{009F}//d; $_; }
+sub remove_spaces        { local $_ = shift; return unless defined $_; tr/\x{0020}\x{3000}//d; $_; }
 
 sub old2new_kanji
 {
@@ -248,12 +249,15 @@ Note that this option unifies only SPACE(U+0020) and IDEOGRAPHIC SPACE(U+3000).
 
 =head2 remove_controls
 
-Note that this option does not remove the following chars:
+Note that this option does not remove the following characters:
 
   CHARACTER TABULATION
   LINE FEED
   CARRIAGE RETURN
 
+=head2 remove_spaces
+
+  Note that this option removes only SPACE(U+0020) and IDEOGRAPHIC SPACE(U+3000).
 
 =head2 unify_whitespaces
 
