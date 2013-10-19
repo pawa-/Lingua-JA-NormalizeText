@@ -103,10 +103,10 @@ sub dakuon_normalize     { Lingua::JA::Dakuon::dakuon_normalize(shift);     }
 sub handakuon_normalize  { Lingua::JA::Dakuon::handakuon_normalize(shift);  }
 sub all_dakuon_normalize { Lingua::JA::Dakuon::all_dakuon_normalize(shift); }
 
-sub wave2tilde           { local $_ = shift; return unless defined $_; tr/\x{301C}/\x{FF5E}/; $_; }
+sub wave2tilde           { local $_ = shift; return unless defined $_; tr/\x{301C}\x{3030}/\x{FF5E}/; $_; }
 sub tilde2wave           { local $_ = shift; return unless defined $_; tr/\x{FF5E}/\x{301C}/; $_; }
-sub wavetilde2long       { local $_ = shift; return unless defined $_; tr/\x{301C}\x{FF5E}/\x{30FC}/; $_; }
-sub wave2long            { local $_ = shift; return unless defined $_; tr/\x{301C}/\x{30FC}/; $_; }
+sub wavetilde2long       { local $_ = shift; return unless defined $_; tr/\x{301C}\x{3030}\x{FF5E}/\x{30FC}/; $_; }
+sub wave2long            { local $_ = shift; return unless defined $_; tr/\x{301C}\x{3030}/\x{30FC}/; $_; }
 sub tilde2long           { local $_ = shift; return unless defined $_; tr/\x{FF5E}/\x{30FC}/; $_; }
 sub fullminus2long       { local $_ = shift; return unless defined $_; tr/\x{2212}/\x{30FC}/; $_; }
 sub dashes2long          { local $_ = shift; return unless defined $_; tr/\x{2012}\x{2013}\x{2014}\x{2015}/\x{30FC}/; $_; }
@@ -200,10 +200,10 @@ The following options are available:
   katakana_h2z           ｽｰﾊｰｽｰﾊｰ               スーハースーハー
   katakana2hiragana      パンツ                 ぱんつ
   hiragana2katakana      ぱんつ                 パンツ
-  wave2tilde             〜                     ～
+  wave2tilde             〜, 〰                 ～
   tilde2wave             ～                     〜
-  wavetilde2long         〜, ～                 ー
-  wave2long              〜                     ー
+  wavetilde2long         〜, 〰, ～             ー
+  wave2long              〜, 〰                 ー
   tilde2long             ～                     ー
   fullminus2long         −                      ー
   dashes2long            —                      ー

@@ -54,10 +54,10 @@ METHODS
       katakana_h2z           ｽｰﾊｰｽｰﾊｰ               スーハースーハー
       katakana2hiragana      パンツ                 ぱんつ
       hiragana2katakana      ぱんつ                 パンツ
-      wave2tilde             〜                     ～
+      wave2tilde             〜, 〰                 ～
       tilde2wave             ～                     〜
-      wavetilde2long         〜, ～                 ー
-      wave2long              〜                     ー
+      wavetilde2long         〜, 〰, ～             ー
+      wave2long              〜, 〰                 ー
       tilde2long             ～                     ー
       fullminus2long         −                      ー
       dashes2long            —                      ー
