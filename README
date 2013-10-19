@@ -74,6 +74,7 @@ METHODS
       old2new_kanji          亞逸鬭                 亜逸闘
       tab2space              (tab)(tab)             (space)(space)
       remove_controls        あ\x{0000}あ           ああ
+      remove_spaces          (space)あ(space)あ(space)  ああ
       dakuon_normalize       さ\x{3099}             ざ
       handakuon_normalize    は\x{309A}             ぱ
       all_dakuon_normalize   さ\x{3099}は\x{309A}   ざぱ
@@ -107,7 +108,7 @@ OPTIONS
       Note that this option removes only SPACE(U+0020) and IDEOGRAPHIC SPACE(U+3000).
 
   unify_whitespaces
-    This option converts the following chars into SPACE(U+0020).
+    This option converts the following characters into SPACE(U+0020).
 
       LINE TABULATION
       FORM FEED
@@ -131,7 +132,7 @@ OPTIONS
       NARROW NO-BREAK SPACE
       MEDIUM MATHEMATICAL SPACE
 
-    Note that this does not convert the following chars:
+    Note that this does not convert the following characters:
 
       CHARACTER TABULATION
       LINE FEED

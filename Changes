@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.22    Sun, 20 Oct 2013 01:27:22 +0900
+        - Added remove_spaces option
+
 0.21    Sat, 05 Oct 2013 17:44:19 +0900
         - Fixed the structure of documentation
 

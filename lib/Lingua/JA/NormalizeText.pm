@@ -13,7 +13,7 @@ use HTML::Scrubber     ();
 use Lingua::JA::Regular::Unicode ();
 use Lingua::JA::Dakuon ();
 
-our $VERSION   = '0.21';
+our $VERSION   = '0.22';
 our @EXPORT    = qw();
 our @EXPORT_OK = qw(nfkc nfkd nfc nfd decode_entities strip_html
 alnum_z2h alnum_h2z space_z2h space_h2z katakana_z2h katakana_h2z
@@ -220,6 +220,7 @@ The following options are available:
   old2new_kanji          亞逸鬭                 亜逸闘
   tab2space              (tab)(tab)             (space)(space)
   remove_controls        あ\x{0000}あ           ああ
+  remove_spaces          (space)あ(space)あ(space)  ああ
   dakuon_normalize       さ\x{3099}             ざ
   handakuon_normalize    は\x{309A}             ぱ
   all_dakuon_normalize   さ\x{3099}は\x{309A}   ざぱ
@@ -261,7 +262,7 @@ Note that this option does not remove the following characters:
 
 =head2 unify_whitespaces
 
-This option converts the following chars into SPACE(U+0020).
+This option converts the following characters into SPACE(U+0020).
 
   LINE TABULATION
   FORM FEED
@@ -285,7 +286,7 @@ This option converts the following chars into SPACE(U+0020).
   NARROW NO-BREAK SPACE
   MEDIUM MATHEMATICAL SPACE
 
-Note that this does not convert the following chars:
+Note that this does not convert the following characters:
 
   CHARACTER TABULATION
   LINE FEED
