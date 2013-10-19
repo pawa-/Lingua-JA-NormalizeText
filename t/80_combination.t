@@ -8,14 +8,12 @@ binmode Test::More->builder->$_ => ':utf8'
     for qw/output failure_output todo_output/;
 
 
-my $normalizer = Lingua::JA::NormalizeText->new(qw/
-    strip_html nl2space unify_long_spaces
-    ltrim rtrim
-/);
+my $normalizer1 = Lingua::JA::NormalizeText->new(qw/strip_html nl2space unify_long_spaces ltrim rtrim/);
+my $normalizer2 = Lingua::JA::NormalizeText->new(qw/ltrim rtrim strip_html unify_long_spaces nl2space/);
 
 my $html = do { local $/; <DATA> };
-
-is($normalizer->normalize($html), 'タイトル 見出し ナビゲーション');
+is($normalizer1->normalize($html), 'タイトル 見出し ナビゲーション');
+like($normalizer2->normalize($html), qr/^\x{0020}+タイトル\x{0020}+見出し\x{0020}+ナビゲーション\x{0020}+$/);
 
 done_testing;
 

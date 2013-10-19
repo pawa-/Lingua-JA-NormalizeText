@@ -20,14 +20,6 @@ my $new_kanji = '亜悪圧囲為医壱逸稲飲隠営栄衛駅謁円縁艶塩奥
 is(length $old_kanji, 385);
 is(length $new_kanji, 385);
 
-my @old_kanjis = split(//, $old_kanji);
-my @new_kanjis = split(//, $new_kanji);
-
-my $i = 0;
-for (@old_kanjis)
-{
-    is($normalizer->normalize($_), $new_kanjis[$i]);
-    $i++;
-}
+is($normalizer->normalize($old_kanji), $new_kanji);
 
 done_testing;

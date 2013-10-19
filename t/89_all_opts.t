@@ -14,5 +14,9 @@ my $normalizer = Lingua::JA::NormalizeText->new(@all_opts);
 
 my $text = "<script>パ\x{0000}ン\x{0000}ツ</script>.?*";
 warning_is { $normalizer->normalize($text); } '';
+warning_is { $normalizer->normalize; } '';
+warning_is { $normalizer->normalize(''); } '';
+
+is($text, "<script>パ\x{0000}ン\x{0000}ツ</script>.?*", 'non-destructive');
 
 done_testing;
