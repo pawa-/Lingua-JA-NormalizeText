@@ -13,7 +13,7 @@ use HTML::Scrubber     ();
 use Lingua::JA::Regular::Unicode ();
 use Lingua::JA::Dakuon ();
 
-our $VERSION   = '0.22';
+our $VERSION   = '0.23';
 our @EXPORT    = qw();
 our @EXPORT_OK = qw(nfkc nfkd nfc nfd decode_entities strip_html
 alnum_z2h alnum_h2z space_z2h space_h2z katakana_z2h katakana_h2z

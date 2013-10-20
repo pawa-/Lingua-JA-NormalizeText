@@ -1,5 +1,9 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.23    Sun, 20 Oct 2013 19:41:47 +0900
+        - Added wavy dash(U+3030) to wave2tilde, wavetilde2long and wave2long options
+        - Fixed fullminus2long option (U+2212 is not fullwidth in the context of Unicode)
+
 0.22    Sun, 20 Oct 2013 01:27:22 +0900
         - Added remove_spaces option
 
