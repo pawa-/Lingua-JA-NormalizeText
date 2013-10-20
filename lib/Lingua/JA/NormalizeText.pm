@@ -108,7 +108,7 @@ sub tilde2wave           { local $_ = shift; return unless defined $_; tr/\x{FF5
 sub wavetilde2long       { local $_ = shift; return unless defined $_; tr/\x{301C}\x{3030}\x{FF5E}/\x{30FC}/; $_; }
 sub wave2long            { local $_ = shift; return unless defined $_; tr/\x{301C}\x{3030}/\x{30FC}/; $_; }
 sub tilde2long           { local $_ = shift; return unless defined $_; tr/\x{FF5E}/\x{30FC}/; $_; }
-sub fullminus2long       { local $_ = shift; return unless defined $_; tr/\x{2212}/\x{30FC}/; $_; }
+sub fullminus2long       { local $_ = shift; return unless defined $_; tr/\x{FF0D}/\x{30FC}/; $_; }
 sub dashes2long          { local $_ = shift; return unless defined $_; tr/\x{2012}\x{2013}\x{2014}\x{2015}/\x{30FC}/; $_; }
 sub drawing_lines2long   { local $_ = shift; return unless defined $_; tr/\x{2500}\x{2501}\x{254C}\x{254D}\x{2574}\x{2576}\x{2578}\x{257A}/\x{30FC}/; $_; }
 sub unify_long_repeats   { local $_ = shift; return unless defined $_; tr/\x{30FC}/\x{30FC}/s; $_; }
@@ -205,7 +205,7 @@ The following options are available:
   wavetilde2long         〜, 〰, ～             ー
   wave2long              〜, 〰                 ー
   tilde2long             ～                     ー
-  fullminus2long         −                      ー
+  fullminus2long         －                     ー
   dashes2long            —                      ー
   drawing_lines2long     ─                      ー
   unify_long_repeats     ヴァーーー             ヴァー
