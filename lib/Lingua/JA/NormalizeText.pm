@@ -244,6 +244,10 @@ normalizes $text.
 
 Note that this option does not convert hyphens into long.
 
+=head2 drawing_line2long
+
+This option converts drawing lines which are similar to long(U+30FC) in appearance.
+
 =head2 unify_long_spaces
 
 Note that this option unifies only SPACE(U+0020) and IDEOGRAPHIC SPACE(U+3000).
