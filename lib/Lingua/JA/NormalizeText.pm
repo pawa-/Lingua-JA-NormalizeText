@@ -7,6 +7,7 @@ use utf8;
 
 use Carp ();
 use Exporter           qw/import/;
+use Sub::Install       qw/install_sub/;
 use Unicode::Normalize ();
 use HTML::Entities     ();
 use HTML::Scrubber     ();
@@ -31,6 +32,24 @@ my %AVAILABLE_OPTS;
 
 our $SCRUBBER = HTML::Scrubber->new;
 
+install_sub({ code => 'lc',                   from => 'CORE',                         into => __PACKAGE__, as => 'lc'                   });
+install_sub({ code => 'uc',                   from => 'CORE',                         into => __PACKAGE__, as => 'uc'                   });
+install_sub({ code => 'NFKC',                 from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfkc'                 });
+install_sub({ code => 'NFKD',                 from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfkd'                 });
+install_sub({ code => 'NFC',                  from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfc'                  });
+install_sub({ code => 'NFD',                  from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfd'                  });
+install_sub({ code => 'decode_entities',      from => 'HTML::Entities',               into => __PACKAGE__, as => 'decode_entities'      });
+install_sub({ code => 'alnum_z2h',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'alnum_z2h'            });
+install_sub({ code => 'alnum_h2z',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'alnum_h2z'            });
+install_sub({ code => 'space_z2h',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'space_z2h'            });
+install_sub({ code => 'space_h2z',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'space_h2z'            });
+install_sub({ code => 'katakana_z2h',         from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana_z2h'         });
+install_sub({ code => 'katakana_h2z',         from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana_h2z'         });
+install_sub({ code => 'katakana2hiragana',    from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana2hiragana'    });
+install_sub({ code => 'hiragana2katakana',    from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'hiragana2katakana'    });
+install_sub({ code => 'dakuon_normalize',     from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'dakuon_normalize'     });
+install_sub({ code => 'handakuon_normalize',  from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'handakuon_normalize'  });
+install_sub({ code => 'all_dakuon_normalize', from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'all_dakuon_normalize' });
 
 sub new
 {
@@ -78,30 +97,7 @@ sub normalize
     return $text;
 }
 
-sub lc   { lc(shift); }
-sub uc   { uc(shift); }
-
-sub nfkc { Unicode::Normalize::NFKC(shift); }
-sub nfkd { Unicode::Normalize::NFKD(shift); }
-sub nfc  { Unicode::Normalize::NFC(shift);  }
-sub nfd  { Unicode::Normalize::NFD(shift);  }
-
-sub decode_entities { HTML::Entities::decode_entities(shift); }
-
 sub strip_html { $SCRUBBER->scrub(shift); }
-
-sub alnum_z2h         { Lingua::JA::Regular::Unicode::alnum_z2h(shift);         }
-sub alnum_h2z         { Lingua::JA::Regular::Unicode::alnum_h2z(shift);         }
-sub space_z2h         { Lingua::JA::Regular::Unicode::space_z2h(shift);         }
-sub space_h2z         { Lingua::JA::Regular::Unicode::space_h2z(shift);         }
-sub katakana_z2h      { Lingua::JA::Regular::Unicode::katakana_z2h(shift);      }
-sub katakana_h2z      { Lingua::JA::Regular::Unicode::katakana_h2z(shift);      }
-sub katakana2hiragana { Lingua::JA::Regular::Unicode::katakana2hiragana(shift); }
-sub hiragana2katakana { Lingua::JA::Regular::Unicode::hiragana2katakana(shift); }
-
-sub dakuon_normalize     { Lingua::JA::Dakuon::dakuon_normalize(shift);     }
-sub handakuon_normalize  { Lingua::JA::Dakuon::handakuon_normalize(shift);  }
-sub all_dakuon_normalize { Lingua::JA::Dakuon::all_dakuon_normalize(shift); }
 
 sub wave2tilde           { local $_ = shift; return unless defined $_; tr/\x{301C}\x{3030}/\x{FF5E}/; $_; }
 sub tilde2wave           { local $_ = shift; return unless defined $_; tr/\x{FF5E}/\x{301C}/; $_; }
