@@ -7,7 +7,7 @@ use utf8;
 
 use Carp ();
 use Exporter           qw/import/;
-use Sub::Install       qw/install_sub/;
+use Sub::Install       ();
 use Unicode::Normalize ();
 use HTML::Entities     ();
 use HTML::Scrubber     ();
@@ -32,24 +32,30 @@ my %AVAILABLE_OPTS;
 
 our $SCRUBBER = HTML::Scrubber->new;
 
-install_sub({ code => 'lc',                   from => 'CORE',                         into => __PACKAGE__, as => 'lc'                   });
-install_sub({ code => 'uc',                   from => 'CORE',                         into => __PACKAGE__, as => 'uc'                   });
-install_sub({ code => 'NFKC',                 from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfkc'                 });
-install_sub({ code => 'NFKD',                 from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfkd'                 });
-install_sub({ code => 'NFC',                  from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfc'                  });
-install_sub({ code => 'NFD',                  from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfd'                  });
-install_sub({ code => 'decode_entities',      from => 'HTML::Entities',               into => __PACKAGE__, as => 'decode_entities'      });
-install_sub({ code => 'alnum_z2h',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'alnum_z2h'            });
-install_sub({ code => 'alnum_h2z',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'alnum_h2z'            });
-install_sub({ code => 'space_z2h',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'space_z2h'            });
-install_sub({ code => 'space_h2z',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'space_h2z'            });
-install_sub({ code => 'katakana_z2h',         from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana_z2h'         });
-install_sub({ code => 'katakana_h2z',         from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana_h2z'         });
-install_sub({ code => 'katakana2hiragana',    from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana2hiragana'    });
-install_sub({ code => 'hiragana2katakana',    from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'hiragana2katakana'    });
-install_sub({ code => 'dakuon_normalize',     from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'dakuon_normalize'     });
-install_sub({ code => 'handakuon_normalize',  from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'handakuon_normalize'  });
-install_sub({ code => 'all_dakuon_normalize', from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'all_dakuon_normalize' });
+# this does not work on Perl 5.8.8
+# - couldn't find subroutine named lc in package CORE
+# - Undefined subroutine &CORE::lc called
+#Sub::Install::install_sub({ code => 'lc',                   from => 'CORE',                         into => __PACKAGE__, as => 'lc'                   });
+#Sub::Install::install_sub({ code => 'uc',                   from => 'CORE',                         into => __PACKAGE__, as => 'uc'                   });
+#Sub::Install::install_sub({ code =>  \&CORE::lc,                                                    into => __PACKAGE__, as => 'lc'                   });
+#Sub::Install::install_sub({ code =>  \&CORE::uc,                                                    into => __PACKAGE__, as => 'uc'                   });
+
+Sub::Install::install_sub({ code => 'NFKC',                 from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfkc'                 });
+Sub::Install::install_sub({ code => 'NFKD',                 from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfkd'                 });
+Sub::Install::install_sub({ code => 'NFC',                  from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfc'                  });
+Sub::Install::install_sub({ code => 'NFD',                  from => 'Unicode::Normalize',           into => __PACKAGE__, as => 'nfd'                  });
+Sub::Install::install_sub({ code => 'decode_entities',      from => 'HTML::Entities',               into => __PACKAGE__, as => 'decode_entities'      });
+Sub::Install::install_sub({ code => 'alnum_z2h',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'alnum_z2h'            });
+Sub::Install::install_sub({ code => 'alnum_h2z',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'alnum_h2z'            });
+Sub::Install::install_sub({ code => 'space_z2h',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'space_z2h'            });
+Sub::Install::install_sub({ code => 'space_h2z',            from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'space_h2z'            });
+Sub::Install::install_sub({ code => 'katakana_z2h',         from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana_z2h'         });
+Sub::Install::install_sub({ code => 'katakana_h2z',         from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana_h2z'         });
+Sub::Install::install_sub({ code => 'katakana2hiragana',    from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'katakana2hiragana'    });
+Sub::Install::install_sub({ code => 'hiragana2katakana',    from => 'Lingua::JA::Regular::Unicode', into => __PACKAGE__, as => 'hiragana2katakana'    });
+Sub::Install::install_sub({ code => 'dakuon_normalize',     from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'dakuon_normalize'     });
+Sub::Install::install_sub({ code => 'handakuon_normalize',  from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'handakuon_normalize'  });
+Sub::Install::install_sub({ code => 'all_dakuon_normalize', from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'all_dakuon_normalize' });
 
 sub new
 {
@@ -96,6 +102,9 @@ sub normalize
 
     return $text;
 }
+
+sub lc { return defined $_[0] ? CORE::lc $_[0] : undef; }
+sub uc { return defined $_[0] ? CORE::uc $_[0] : undef; }
 
 sub strip_html { $SCRUBBER->scrub(shift); }
 
