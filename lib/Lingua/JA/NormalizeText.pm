@@ -59,10 +59,13 @@ Sub::Install::install_sub({ code => 'all_dakuon_normalize', from => 'Lingua::JA:
 
 sub new
 {
-    my ($class, @opts) = @_;
-    my $self = bless {}, $class;
+    my ($class) = shift;
+
+    my @opts = (ref $_[0] eq 'ARRAY' ? @{$_[0]} : @_);
 
     Carp::croak("at least one option is required") unless scalar @opts;
+
+    my $self = bless {}, $class;
 
     $self->{converters} = [];
 

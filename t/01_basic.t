@@ -22,7 +22,10 @@ is($exception, undef, 'no exception');
 
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/lc/);
-isa_ok($normalizer, 'Lingua::JA::NormalizeText');
+isa_ok($normalizer, 'Lingua::JA::NormalizeText', 'new with array');
+
+$normalizer = Lingua::JA::NormalizeText->new([qw/lc/]);
+isa_ok($normalizer, 'Lingua::JA::NormalizeText', 'new with arrayref');
 
 my $result;
 $result = $normalizer->normalize($result);
