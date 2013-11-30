@@ -5,14 +5,14 @@ all_from 'lib/Lingua/JA/NormalizeText.pm';
 
 requires 'Carp';
 requires 'Exporter';
+requires 'Sub::Install';
 requires 'Unicode::Normalize'           => 1.00;
 requires 'HTML::Entities'               => 3.66;
-requires 'HTML::Scrubber'               => 0.09;
+requires 'HTML::Scrubber'               => 0.10;
 requires 'Lingua::JA::Regular::Unicode' => 0.11;
 requires 'Lingua::JA::Dakuon';
 
 test_requires 'Test::More' => 0.88; # done_testing
-test_requires 'Test::Base';
 test_requires 'Test::Fatal';
 test_requires 'Test::Warn' => 0.20;
 
