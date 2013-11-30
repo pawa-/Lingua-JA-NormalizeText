@@ -1,5 +1,11 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.24    Sat, 30 Nov 2013 15:58:53 +0900
+        - Allowed 'new' method to accept an arrayref
+        - Added Sub::Install dependency
+        - Removed Test::Base dependency
+        - Replaced the subroutine redefinitions with Sub::Install::install_sub( ... )
+
 0.23    Sun, 20 Oct 2013 19:41:47 +0900
         - Added wavy dash(U+3030) to wave2tilde, wavetilde2long and wave2long options
         - Fixed fullminus2long option (U+2212 is not fullwidth in the context of Unicode)
