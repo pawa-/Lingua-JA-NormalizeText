@@ -56,6 +56,10 @@ Sub::Install::install_sub({ code => 'hiragana2katakana',    from => 'Lingua::JA:
 Sub::Install::install_sub({ code => 'dakuon_normalize',     from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'dakuon_normalize'     });
 Sub::Install::install_sub({ code => 'handakuon_normalize',  from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'handakuon_normalize'  });
 Sub::Install::install_sub({ code => 'all_dakuon_normalize', from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'all_dakuon_normalize' });
+Sub::Install::install_sub({ code => 'square2katakana',      from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'square2katakana'      });
+Sub::Install::install_sub({ code => 'circled2kana',         from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'circled2kana'         });
+Sub::Install::install_sub({ code => 'circled2kanji',        from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'circled2kanji'        });
+Sub::Install::install_sub({ code => 'bracketed2kanji',      from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'bracketed2kanji'      });
 
 sub new
 {
@@ -194,16 +198,16 @@ The following options are available:
   ---------------------  ---------------------  -----------------------
   lc                     DdD                    ddd
   uc                     DdD                    DDD
-  nfkc                   ㌦                     ドル (length: 2)
-  nfkd                   ㌦                     ドル (length: 3)
-  nfc
-  nfd
+  nfkc                   ｶﾞ                     ガ (U+30AC)
+  nfkd                   ｶﾞ                     ガ (U+30AB. U+30A9)
+  nfc                    ド                     ド (U+30C9)
+  nfd                    ド                     ト (U+30C8, U+3099)
   decode_entities        &hearts;               ♥
   strip_html             <em>あ</em>                あ    
   alnum_z2h              ＡＢＣ１２３           ABC123
   alnum_h2z              ABC123                 ＡＢＣ１２３
-  space_z2h
-  space_h2z
+  space_z2h              \x{3000}               \x{0020}
+  space_h2z              \x{0020}               \x{3000}
   katakana_z2h           ハァハァ               ﾊｧﾊｧ
   katakana_h2z           ｽｰﾊｰｽｰﾊｰ               スーハースーハー
   katakana2hiragana      パンツ                 ぱんつ
@@ -229,9 +233,9 @@ The following options are available:
   tab2space              (tab)(tab)             (space)(space)
   remove_controls        あ\x{0000}あ           ああ
   remove_spaces          (space)あ(space)あ(space)  ああ
-  dakuon_normalize       さ\x{3099}             ざ
-  handakuon_normalize    は\x{309A}             ぱ
-  all_dakuon_normalize   さ\x{3099}は\x{309A}   ざぱ
+  dakuon_normalize       さ\x{3099}             ざ (U+3056)
+  handakuon_normalize    は\x{309A}             ぱ (U+3071)
+  all_dakuon_normalize   さ\x{3099}は\x{309A}   ざぱ (U+3056, U+3071)
 
 The order in which these options are applied is according to the order of
 the elements of @options.
