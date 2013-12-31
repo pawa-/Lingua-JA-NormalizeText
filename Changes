@@ -1,5 +1,9 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.25    Tue, 31 Dec 2013 17:29:21 +0900
+        - Improved documentation
+        - Added Test::Synopsis::Expectation dependency
+
 0.24    Sat, 30 Nov 2013 15:58:53 +0900
         - Allowed 'new' method to accept an arrayref
         - Added Sub::Install dependency
