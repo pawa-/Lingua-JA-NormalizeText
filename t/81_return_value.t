@@ -51,6 +51,9 @@ is(remove_spaces(undef), undef);
 is(dakuon_normalize(undef), undef);
 is(handakuon_normalize(undef), undef);
 is(all_dakuon_normalize(undef), undef);
+is(square2katakana(undef), undef);
+is(circled2kana(undef), undef);
+is(circled2kanji(undef), undef);
 =end
 =cut
 
@@ -96,6 +99,9 @@ is(remove_spaces(''), '');
 is(dakuon_normalize(''), '');
 is(handakuon_normalize(''), '');
 is(all_dakuon_normalize(''), '');
+is(square2katakana(''), '');
+is(circled2kana(''), '');
+is(circled2kanji(''), '');
 =end
 =cut
 

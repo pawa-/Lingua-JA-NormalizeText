@@ -76,6 +76,9 @@ METHODS
       dakuon_normalize       さ\x{3099}             ざ (U+3056)
       handakuon_normalize    は\x{309A}             ぱ (U+3071)
       all_dakuon_normalize   さ\x{3099}は\x{309A}   ざぱ (U+3056, U+3071)
+      square2katakana        ㌢                     センチ
+      circled2kana           ㋙㋛㋑㋟㋑             コシイタイ
+      circled2kanji          ㊩㊫㊚㊒㊖             医学男有財
 
     The order in which these options are applied is according to the order
     of the elements of @options. (i.e., The first element is applied first,
@@ -315,6 +318,9 @@ OPTIONS
 
   dakuon_normalize, handakuon_normalize, all_dakuon_normalize
     See Lingua::JA::Dakuon.
+
+  square2katakana, circled2kana, circled2kanji
+    See Lingua::JA::Moji.
 
 AUTHOR
     pawa <pawapawa@cpan.org>

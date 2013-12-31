@@ -13,6 +13,7 @@ use HTML::Entities     ();
 use HTML::Scrubber     ();
 use Lingua::JA::Regular::Unicode ();
 use Lingua::JA::Dakuon ();
+use Lingua::JA::Moji   ();
 
 our $VERSION   = '0.25';
 our @EXPORT    = qw();
@@ -23,7 +24,8 @@ wavetilde2long wave2long tilde2long fullminus2long dashes2long
 drawing_lines2long unify_long_repeats nl2space unify_long_spaces
 unify_whitespaces unify_nl trim ltrim rtrim old2new_kana old2new_kanji
 tab2space remove_controls remove_spaces dakuon_normalize
-handakuon_normalize all_dakuon_normalize);
+handakuon_normalize all_dakuon_normalize
+square2katakana circled2kana circled2kanji);
 
 our %EXPORT_TAGS = ( all => [ @EXPORT, @EXPORT_OK ] );
 
@@ -56,10 +58,9 @@ Sub::Install::install_sub({ code => 'hiragana2katakana',    from => 'Lingua::JA:
 Sub::Install::install_sub({ code => 'dakuon_normalize',     from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'dakuon_normalize'     });
 Sub::Install::install_sub({ code => 'handakuon_normalize',  from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'handakuon_normalize'  });
 Sub::Install::install_sub({ code => 'all_dakuon_normalize', from => 'Lingua::JA::Dakuon',           into => __PACKAGE__, as => 'all_dakuon_normalize' });
-#Sub::Install::install_sub({ code => 'square2katakana',      from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'square2katakana'      });
-#Sub::Install::install_sub({ code => 'circled2kana',         from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'circled2kana'         });
-#Sub::Install::install_sub({ code => 'circled2kanji',        from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'circled2kanji'        });
-#Sub::Install::install_sub({ code => 'bracketed2kanji',      from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'bracketed2kanji'      });
+Sub::Install::install_sub({ code => 'square2katakana',      from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'square2katakana'      });
+Sub::Install::install_sub({ code => 'circled2kana',         from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'circled2kana'         });
+Sub::Install::install_sub({ code => 'circled2kanji',        from => 'Lingua::JA::Moji',             into => __PACKAGE__, as => 'circled2kanji'        });
 
 sub new
 {
@@ -234,6 +235,9 @@ The following options are available:
   dakuon_normalize       さ\x{3099}             ざ (U+3056)
   handakuon_normalize    は\x{309A}             ぱ (U+3071)
   all_dakuon_normalize   さ\x{3099}は\x{309A}   ざぱ (U+3056, U+3071)
+  square2katakana        ㌢                     センチ
+  circled2kana           ㋙㋛㋑㋟㋑             コシイタイ
+  circled2kanji          ㊩㊫㊚㊒㊖             医学男有財
 
 The order in which these options are applied is according to the order of
 the elements of @options.
@@ -517,6 +521,10 @@ Removes SPACE (U+0020) and IDEOGRAPHIC SPACE (U+3000).
 =head2 dakuon_normalize, handakuon_normalize, all_dakuon_normalize
 
 See L<Lingua::JA::Dakuon>.
+
+=head2 square2katakana, circled2kana, circled2kanji
+
+See L<Lingua::JA::Moji>.
 
 
 =head1 AUTHOR

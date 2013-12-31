@@ -24,3 +24,5 @@ katakana
 katakanas
 wavetilde
 nl
+kana
+kanji
