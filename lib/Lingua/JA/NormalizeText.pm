@@ -197,9 +197,9 @@ The following options are available:
   lc                     DdD                    ddd
   uc                     DdD                    DDD
   nfkc                   ｶﾞ                     ガ (U+30AC)
-  nfkd                   ｶﾞ                     ガ (U+30AB. U+30A9)
+  nfkd                   ｶﾞ                     ガ (U+30AB. U+3099)
   nfc                    ド                     ド (U+30C9)
-  nfd                    ド                     ト (U+30C8, U+3099)
+  nfd                    ド                     ド (U+30C8, U+3099)
   decode_entities        &hearts;               ♥
   strip_html             <em>あ</em>                あ    
   alnum_z2h              ＡＢＣ１２３           ABC123
@@ -386,7 +386,7 @@ Unifies long (U+30FC) repeats.
 
 =head2 nl2space
 
-Converts new lines (LF, CR, CRLF) to SPACE (U+0020).
+Converts new lines (LF, CR, CRLF) into SPACE (U+0020).
 
 =head2 unify_nl
 
@@ -398,7 +398,7 @@ Unifies long spaces (U+0020 and U+3000).
 
 =head2 unify_whitespaces
 
-This option converts the following characters into SPACE (U+0020).
+Converts the following characters into SPACE (U+0020).
 
   U+000B  LINE TABULATION
   U+000C  FORM FEED
@@ -422,7 +422,7 @@ This option converts the following characters into SPACE (U+0020).
   U+202F  NARROW NO-BREAK SPACE
   U+205F  MEDIUM MATHEMATICAL SPACE
 
-Note that this does not convert the following characters:
+Note that this option does not convert the following characters:
 
   U+0009  CHARACTER TABULATION
   U+000A  LINE FEED
@@ -488,6 +488,10 @@ OUTPUT FOR INPUT:
   薬訳予余与誉揺様謡来頼乱欄覧隆竜虜両猟緑塁涙類励礼隷霊齢暦歴
   恋練錬炉労廊朗楼郎録湾尭巌晋槙渚猪琢瑶祐禄禎穣聡遥
 
+
+=head2 tab2space
+
+Converts CHARACTER TABULATION (U+0009) into SPACE (U+0020).
 
 =head2 remove_controls
 
