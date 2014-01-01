@@ -336,6 +336,8 @@ SEE ALSO
 
     Unicode::Normalize
 
+    Unicode::Number
+
     HTML::Entities
 
     HTML::Scrubber

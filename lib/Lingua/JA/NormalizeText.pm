@@ -543,6 +543,8 @@ L<Lingua::JA::Moji>
 
 L<Unicode::Normalize>
 
+L<Unicode::Number>
+
 L<HTML::Entities>
 
 L<HTML::Scrubber>
