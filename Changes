@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.30    Wed, 01 Jan 2014 17:07:10 +0900
+        - No code change
+
 0.26    Tue, 31 Dec 2013 23:56:23 +0900
         - Added square2katakana, circled2kana and circled2kanji options
         - Added Lingua::JA::Moji dependency
