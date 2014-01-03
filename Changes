@@ -1,5 +1,8 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.31    Fri, 03 Jan 2014 11:34:15 +0900
+        - Removes Test::Synopsis::Expectation dependency (only required on the author tests)
+
 0.30    Wed, 01 Jan 2014 17:07:10 +0900
         - No code change
 
