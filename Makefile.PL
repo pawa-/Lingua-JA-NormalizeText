@@ -16,7 +16,6 @@ requires 'Lingua::JA::Moji'             => 0.30;
 test_requires 'Test::More' => 0.88; # done_testing
 test_requires 'Test::Fatal';
 test_requires 'Test::Warn' => 0.20;
-test_requires 'Test::Synopsis::Expectation' => 0.02;
 
 tests 't/*.t';
 author_tests 'xt';
