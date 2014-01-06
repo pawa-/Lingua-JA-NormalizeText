@@ -25,7 +25,8 @@ drawing_lines2long unify_long_repeats nl2space unify_long_spaces
 unify_whitespaces unify_nl trim ltrim rtrim old2new_kana old2new_kanji
 tab2space remove_controls remove_spaces dakuon_normalize
 handakuon_normalize all_dakuon_normalize
-square2katakana circled2kana circled2kanji);
+square2katakana circled2kana circled2kanji
+remove_DFC);
 
 our %EXPORT_TAGS = ( all => [ @EXPORT, @EXPORT_OK ] );
 
@@ -136,6 +137,7 @@ sub tab2space            { local $_ = shift; return unless defined $_; tr/\x{000
 sub old2new_kana         { local $_ = shift; return unless defined $_; tr/ゐヰゑヱ/いイえエ/; s/ヸ/イ\x{3099}/g; s/ヹ/エ\x{3099}/g; $_; }
 sub remove_controls      { local $_ = shift; return unless defined $_; tr/\x{0000}-\x{0008}\x{000B}\x{000C}\x{000E}-\x{001F}\x{007F}-\x{009F}//d; $_; }
 sub remove_spaces        { local $_ = shift; return unless defined $_; tr/\x{0020}\x{3000}//d; $_; }
+sub remove_DFC           { local $_ = shift; return unless defined $_; tr/\x{061C}\x{2066}-\x{2069}\x{200E}\x{200F}\x{202A}-\x{202E}//d; $_; }
 
 sub old2new_kanji
 {
@@ -231,6 +233,7 @@ The following options are available:
   old2new_kanji          亞逸鬭                 亜逸闘
   tab2space              (tab)(tab)             (space)(space)
   remove_controls        あ\x{0000}あ           ああ
+  remove_DFC             \x{202E}HOGE           HOGE
   remove_spaces          \x{0020}あ\x{3000}あ\x{0020}  ああ
   dakuon_normalize       さ\x{3099}             ざ (U+3056)
   handakuon_normalize    は\x{309A}             ぱ (U+3071)
@@ -512,6 +515,27 @@ Note that this option does not remove the following characters:
   U+0009  CHARACTER TABULATION
   U+000A  LINE FEED
   U+000D  CARRIAGE RETURN
+
+
+=head2 remove_DFC
+
+Removes the following Directional Formatting Characters:
+
+  U+061C  ARABIC LETTER MARK
+  U+2066  LEFT-TO-RIGHT ISOLATE
+  U+2067  RIGHT-TO-LEFT ISOLATE
+  U+2068  FIRST STRONG ISOLATE
+  U+2069  POP DIRECTIONAL ISOLATE
+  U+200E  LEFT-TO-RIGHT MARK
+  U+200F  RIGHT-TO-LEFT MARK
+  U+202A  LEFT-TO-RIGHT EMBEDDING
+  U+202B  RIGHT-TO-LEFT EMBEDDING
+  U+202C  POP DIRECTIONAL FORMATTING
+  U+202D  LEFT-TO-RIGHT OVERRIDE
+  U+202E  RIGHT-TO-LEFT OVERRIDE
+
+
+See L<http://www.unicode.org/reports/tr9/> for more information about Directional Formatting Characters.
 
 
 =head2 remove_spaces
