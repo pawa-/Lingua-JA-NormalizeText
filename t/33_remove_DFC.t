@@ -28,7 +28,7 @@ my $RLI = "\x{2067}";
 my $FSI = "\x{2068}";
 my $PDI = "\x{2069}";
 
-is(remove_DFC("\x{200D}$LRM$RLM$ALM\x{061B}\x{061D}" x 2), "\x{200D}\x{061B}\x{061D}" x 2, 'Implicit Directional Formatting Characters');
+is(remove_DFC("\x{200D}$LRM$RLM\x{2010}$ALM\x{061B}\x{061D}" x 2), "\x{200D}\x{2010}\x{061B}\x{061D}" x 2, 'Implicit Directional Formatting Characters');
 is(remove_DFC("\x{2029}$LRE$RLE$LRO$RLO$PDF\x{202F}"), "\x{2029}\x{202F}", 'Explicit Directional Embedding and Override Formatting Characters');
 is(remove_DFC("\x{2065}$LRI$RLI$FSI$PDI\x{206A}"), "\x{2065}\x{206A}", 'Explicit Directional Isolate Formatting Characters');
 
