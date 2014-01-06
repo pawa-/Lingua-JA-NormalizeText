@@ -504,11 +504,11 @@ Converts CHARACTER TABULATION (U+0009) into SPACE (U+0020).
 
 Removes the following characters:
 
-  U+0000 - U+0008
+  U+0000 .. U+0008
   U+000B
   U+000C
-  U+000E - U+001F
-  U+007E - U+009F
+  U+000E .. U+001F
+  U+007F .. U+009F
 
 Note that this option does not remove the following characters:
 
