@@ -1,5 +1,9 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+0.32    Mon, 06 Jan 2014 19:59:36 +0900
+        - Added remove_DFC option
+        - Fixed typo
+
 0.31    Fri, 03 Jan 2014 11:34:15 +0900
         - Removes Test::Synopsis::Expectation dependency (only required on the author tests)
 
