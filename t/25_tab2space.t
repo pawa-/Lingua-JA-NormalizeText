@@ -15,6 +15,6 @@ my $space = "\x{0020}";
 
 is(tab2space("\t"), ' ');
 is($normalizer->normalize($tab x 10), $space x 10);
-is($normalizer->normalize("あ${tab}${space}い"), "あ${space}${space}い");
+is($normalizer->normalize("あ${tab}${space}い" x 2), "あ${space}${space}い" x 2);
 
 done_testing;

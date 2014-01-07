@@ -10,9 +10,9 @@ binmode Test::More->builder->$_ => ':utf8'
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/ltrim rtrim/);
 
-is(  trim("    にゃ ？　"), "にゃ ？",  "trim" );
-is( ltrim("    にゃ ？ "),  "にゃ ？ ", "ltrim" );
-is( rtrim("   にゃにゃーん ！   "), "   にゃにゃーん ！", "rtrim" );
+is(  trim("\x{0020}\x{0020}にゃ ？\x{3000}"), "にゃ ？",  "trim" );
+is( ltrim("\x{0020}\x{0020}にゃ ？\x{0020}"), "にゃ ？\x{0020}", "ltrim" );
+is( rtrim("\x{0020}\x{0020}にゃにゃーん\x{0020}！\x{0020}\x{0020}"), "\x{0020}\x{0020}にゃにゃーん\x{0020}！", "rtrim" );
 
 chomp(my $text = do { local $/; <DATA> });
 is(trim($text), "にゃんだかにゃー　\n にゃふん！", "trim multi-line");

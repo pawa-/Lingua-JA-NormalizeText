@@ -10,6 +10,6 @@ binmode Test::More->builder->$_ => ':utf8'
 is(decode_entities('&hearts;'), '♥');
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/decode_entities/);
-is($normalizer->normalize('あ&hearts;あ'), 'あ♥あ');
+is($normalizer->normalize('あ&hearts;あ' x 2), 'あ♥あ'x 2);
 
 done_testing;

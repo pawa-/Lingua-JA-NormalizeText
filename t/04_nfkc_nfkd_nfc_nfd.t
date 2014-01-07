@@ -7,19 +7,12 @@ use Test::More;
 binmode Test::More->builder->$_ => ':utf8'
     for qw/output failure_output todo_output/;
 
-is( nfkc('㌦'), 'ドル', 'NFKC' ); # ドル
-is( length nfkc('㌦'), 2, 'NFKC' );
-
-is( nfkd('㌦'), 'ドル', 'NFKD' ); # ト U+3099 ル (length: 3)
-is( length nfkd('㌦'), 3, 'NFKD' );
-
-is( nfc('Á'), 'Á', 'NFC' );
-is( nfc('①'), '①', 'NFC' );
-
-is( nfd('①'), '①', 'NFD' );
-is( nfd('Á'), 'Á', 'NFD' );
+is( nfkc('ｶﾞ'), "\x{30AC}",         'NFKC' );
+is( nfkd('ｶﾞ'), "\x{30AB}\x{3099}", 'NFKD' );
+is( nfc('ド'),  "\x{30C9}",         'NFC' );
+is( nfd('ド'),  "\x{30C8}\x{3099}", 'NFD' );
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/nfkc/);
-is($normalizer->normalize('㌻'), 'ページ', 'NFKC');
+is($normalizer->normalize('㌻' x 2), 'ページ' x 2, 'NFKC normalizer');
 
 done_testing;

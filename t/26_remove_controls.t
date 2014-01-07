@@ -10,6 +10,7 @@ binmode Test::More->builder->$_ => ':utf8'
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/remove_controls/);
 
+# \t = U+0009
 my @skip_chars = ( "\t", chr hex('000A'), chr hex('000D') );
 my @not_controls  = ( chr hex('0020'), chr hex('00A0') );
 
@@ -37,16 +38,8 @@ for my $dec (
         is($normalizer->normalize($chara), '', $hex);
         is($normalizer->normalize($chara x 2), '', $hex);
     }
-
-    $chara =~ s/\p{Cntrl}//;
-
-    if ( grep { $chara eq $_ } @not_controls )
-    {
-        is($chara, $chara, $hex);
-    }
-    else { is($chara, '', "\\p{Cntrl} $hex"); }
 }
 
-is(remove_controls("あ\x{0000}あ"), "ああ");
+is(remove_controls("あ\x{0000}あ" x 2), "ああ" x 2);
 
 done_testing;
