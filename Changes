@@ -2,6 +2,8 @@ Revision history for Perl extension Lingua::JA::NormalizeText
 
 {{$NEXT}}
 
+0.33_01 2014-02-08T03:54:43Z
+
         - Changed the module authoring tool form Module::Install to Minilla
         - Return undef even if argument is undef in list context
         - Added tests
