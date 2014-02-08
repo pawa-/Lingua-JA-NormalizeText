@@ -150,6 +150,8 @@ sub old2new_kanji
 
 __END__
 
+=for stopwords lc nfkc nfkd nfc nfd wavetilde2long fullminus2long nl2space whitespace ltrim rtrim
+
 =encoding utf-8
 
 =head1 NAME
