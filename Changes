@@ -1,5 +1,12 @@
 Revision history for Perl extension Lingua::JA::NormalizeText
 
+{{$NEXT}}
+
+        - Changed the module authoring tool form Module::Install to Minilla
+        - Return undef even if argument is undef in list context
+        - Added tests
+        - Improved tests
+
 0.32    Mon, 06 Jan 2014 19:59:36 +0900
         - Added remove_DFC option
         - Fixed typo

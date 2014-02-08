@@ -9,7 +9,7 @@ binmode Test::More->builder->$_ => ':utf8'
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/square2katakana/);
 
-is(square2katakana("㌔㍉！"), 'キロミリ！');
-is($normalizer->normalize("㌔㍉！"), 'キロミリ！');
+is(square2katakana('㌔㍉！'), 'キロミリ！');
+is($normalizer->normalize('㌔㍉！' x 2), 'キロミリ！' x 2);
 
 done_testing;

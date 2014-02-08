@@ -9,7 +9,7 @@ binmode Test::More->builder->$_ => ':utf8'
 
 my $normalizer = Lingua::JA::NormalizeText->new(qw/circled2kana/);
 
-is(circled2kana("㋙㋛㋑㋟㋑！"), 'コシイタイ！');
-is($normalizer->normalize("㋙㋛㋑㋟㋑！"), 'コシイタイ！');
+is(circled2kana('㋙㋛㋑㋟㋑！' x 2), 'コシイタイ！' x 2);
+is($normalizer->normalize('㋙㋛㋑㋟㋑！'), 'コシイタイ！');
 
 done_testing;
