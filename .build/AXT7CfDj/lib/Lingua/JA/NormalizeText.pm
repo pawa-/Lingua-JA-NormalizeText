@@ -147,7 +147,7 @@ sub remove_controls      { local $_ = shift; return undef unless defined $_; tr/
 sub remove_spaces        { local $_ = shift; return undef unless defined $_; tr/\x{0020}\x{3000}//d; $_; }
 sub remove_DFC           { local $_ = shift; return undef unless defined $_; tr/\x{061C}\x{2066}-\x{2069}\x{200E}\x{200F}\x{202A}-\x{202E}//d; $_; }
 
-sub decompose_parenthesized_kanji { local $_ = shift; return undef unless defined $_; s/([\x{3220}-\x{3243}])/"($parenthesized_kanji_map{$1})"/ge; $_; }
+sub decompose_parenthesized_kanji { local $_ = shift; return undef unless defined $_; s/([\x{3220}-\x{3243}])/\x{0028}$parenthesized_kanji_map{$1}\x{0029}/ge; $_; }
 
 sub old2new_kanji
 {
@@ -253,7 +253,6 @@ The following options are available:
   square2katakana        ㌢                     センチ
   circled2kana           ㋙㋛㋑㋟㋑             コシイタイ
   circled2kanji          ㊩㊫㊚㊒㊖             医学男有財
-  decompose_parenthesized_kanji  ㈱             (株)
 
 The order in which these options are applied is according to the order of
 the elements of @options.
@@ -562,12 +561,6 @@ See L<Lingua::JA::Dakuon>.
 =head2 square2katakana, circled2kana, circled2kanji
 
 See L<Lingua::JA::Moji>.
-
-=head2 decompose_parenthesized_kanji
-
-Decomposes the following parenthesized kanji:
-
-  ㈠㈡㈢㈣㈤㈥㈦㈧㈨㈩㈪㈫㈬㈭㈮㈯㈰㈱㈲㈳㈴㈵㈶㈷㈸㈹㈺㈻㈼㈽㈾㈿㉀㉁㉂㉃
 
 
 =head1 AUTHOR

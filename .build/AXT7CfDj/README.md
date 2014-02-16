@@ -87,7 +87,6 @@ The following options are available:
     square2katakana        ㌢                     センチ
     circled2kana           ㋙㋛㋑㋟㋑             コシイタイ
     circled2kanji          ㊩㊫㊚㊒㊖             医学男有財
-    decompose_parenthesized_kanji  ㈱             (株)
 
 The order in which these options are applied is according to the order of
 the elements of @options.
@@ -410,12 +409,6 @@ See [Lingua::JA::Dakuon](https://metacpan.org/pod/Lingua::JA::Dakuon).
 ## square2katakana, circled2kana, circled2kanji
 
 See [Lingua::JA::Moji](https://metacpan.org/pod/Lingua::JA::Moji).
-
-## decompose\_parenthesized\_kanji
-
-Decomposes the following parenthesized kanji:
-
-    ㈠㈡㈢㈣㈤㈥㈦㈧㈨㈩㈪㈫㈬㈭㈮㈯㈰㈱㈲㈳㈴㈵㈶㈷㈸㈹㈺㈻㈼㈽㈾㈿㉀㉁㉂㉃
 
 
 
