@@ -48,6 +48,7 @@ is(tab2space(undef), undef);
 is(remove_controls(undef), undef);
 is(remove_spaces(undef), undef);
 is(remove_DFC(undef), undef);
+is(decompose_parenthesized_kanji(undef), undef);
 =begin
 is(dakuon_normalize(undef), undef);
 is(handakuon_normalize(undef), undef);

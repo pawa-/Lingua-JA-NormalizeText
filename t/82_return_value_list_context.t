@@ -34,6 +34,7 @@ is_deeply( [ remove_controls() ], [undef] );
 is_deeply( [ remove_spaces() ], [undef] );
 is_deeply( [ remove_DFC() ], [undef] );
 is_deeply( [ old2new_kanji() ], [ undef ] );
+is_deeply( [ decompose_parenthesized_kanji() ], [ undef ] );
 
 sub test { return; }
 
