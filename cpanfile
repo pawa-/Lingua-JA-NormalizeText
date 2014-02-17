@@ -8,7 +8,7 @@ requires 'HTML::Entities',               '>= 3.66';
 requires 'HTML::Scrubber',               '>= 0.10';
 requires 'Lingua::JA::Regular::Unicode', '>= 0.11';
 requires 'Lingua::JA::Dakuon';
-requires 'Lingua::JA::Moji',             '>= 0.30';
+requires 'Lingua::JA::Moji',             '>= 0.32';
 
 on 'test' => sub {
     requires 'Test::More',  '>= 0.99';
