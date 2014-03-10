@@ -2,6 +2,10 @@ Revision history for Perl extension Lingua::JA::NormalizeText
 
 {{$NEXT}}
 
+0.43 2014-03-10T13:04:35Z
+
+        - Improved documentation
+
 0.42 2014-02-17T01:55:55Z
 
         - Updated Lingua::JA::Moji dependency to Ver. 0.32
