@@ -576,7 +576,9 @@ pawa E<lt>pawapawa@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
-新旧字体表: L<http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html>
+L<新旧字体表|<http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html>
+
+L<康熙字典|http://ja.wikipedia.org/wiki/%E5%BA%B7%E7%86%99%E5%AD%97%E5%85%B8>
 
 L<Lingua::JA::Regular::Unicode>
 

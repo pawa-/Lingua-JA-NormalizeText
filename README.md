@@ -425,7 +425,9 @@ pawa <pawapawa@cpan.org>
 
 # SEE ALSO
 
-新旧字体表: [http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html](http://www.asahi-net.or.jp/~ax2s-kmtn/ref/old_chara.html)
+[新旧字体表](https://metacpan.org/pod/<http:#www.asahi-net.or.jp-ax2s-kmtn-ref-old_chara.html)
+
+[康熙字典](http://ja.wikipedia.org/wiki/%E5%BA%B7%E7%86%99%E5%AD%97%E5%85%B8)
 
 [Lingua::JA::Regular::Unicode](https://metacpan.org/pod/Lingua::JA::Regular::Unicode)
 
