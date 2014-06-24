@@ -2,7 +2,6 @@ requires 'perl', '5.008001';
 
 requires 'Carp';
 requires 'Exporter';
-requires 'Sub::Install';
 requires 'Unicode::Normalize',           '>= 1.00';
 requires 'HTML::Entities',               '>= 3.66';
 requires 'HTML::Scrubber',               '>= 0.10';

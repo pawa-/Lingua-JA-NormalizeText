@@ -7,7 +7,6 @@ use utf8;
 
 use Carp ();
 use Exporter           qw/import/;
-use Sub::Install       ();
 use Unicode::Normalize ();
 use HTML::Entities     ();
 use HTML::Scrubber     ();
@@ -44,33 +43,35 @@ my %parenthesized_kanji_map = (
 
 our $SCRUBBER = HTML::Scrubber->new;
 
-# This does not work on Perl 5.8.8
+# This does not work on Perl 5.8.8 !!
+# Error message:
 # - couldn't find subroutine named lc in package CORE
 # - Undefined subroutine &CORE::lc called
-#Sub::Install::install_sub({ code => 'lc',                   from => 'CORE',                         as => 'lc'                   });
-#Sub::Install::install_sub({ code => 'uc',                   from => 'CORE',                         as => 'uc'                   });
-#Sub::Install::install_sub({ code =>  \&CORE::lc,                                                    as => 'lc'                   });
-#Sub::Install::install_sub({ code =>  \&CORE::uc,                                                    as => 'uc'                   });
+=begin
+*lc = /&CORE::lc;
+*uc = /&CORE::uc;
+=end
+=cut
 
-Sub::Install::install_sub({ code => 'NFKC',                 from => 'Unicode::Normalize',           as => 'nfkc'                 });
-Sub::Install::install_sub({ code => 'NFKD',                 from => 'Unicode::Normalize',           as => 'nfkd'                 });
-Sub::Install::install_sub({ code => 'NFC',                  from => 'Unicode::Normalize',           as => 'nfc'                  });
-Sub::Install::install_sub({ code => 'NFD',                  from => 'Unicode::Normalize',           as => 'nfd'                  });
-Sub::Install::install_sub({ code => 'decode_entities',      from => 'HTML::Entities',               as => 'decode_entities'      });
-Sub::Install::install_sub({ code => 'alnum_z2h',            from => 'Lingua::JA::Regular::Unicode', as => 'alnum_z2h'            });
-Sub::Install::install_sub({ code => 'alnum_h2z',            from => 'Lingua::JA::Regular::Unicode', as => 'alnum_h2z'            });
-Sub::Install::install_sub({ code => 'space_z2h',            from => 'Lingua::JA::Regular::Unicode', as => 'space_z2h'            });
-Sub::Install::install_sub({ code => 'space_h2z',            from => 'Lingua::JA::Regular::Unicode', as => 'space_h2z'            });
-Sub::Install::install_sub({ code => 'katakana_z2h',         from => 'Lingua::JA::Regular::Unicode', as => 'katakana_z2h'         });
-Sub::Install::install_sub({ code => 'katakana_h2z',         from => 'Lingua::JA::Regular::Unicode', as => 'katakana_h2z'         });
-Sub::Install::install_sub({ code => 'katakana2hiragana',    from => 'Lingua::JA::Regular::Unicode', as => 'katakana2hiragana'    });
-Sub::Install::install_sub({ code => 'hiragana2katakana',    from => 'Lingua::JA::Regular::Unicode', as => 'hiragana2katakana'    });
-Sub::Install::install_sub({ code => 'dakuon_normalize',     from => 'Lingua::JA::Dakuon',           as => 'dakuon_normalize'     });
-Sub::Install::install_sub({ code => 'handakuon_normalize',  from => 'Lingua::JA::Dakuon',           as => 'handakuon_normalize'  });
-Sub::Install::install_sub({ code => 'all_dakuon_normalize', from => 'Lingua::JA::Dakuon',           as => 'all_dakuon_normalize' });
-Sub::Install::install_sub({ code => 'square2katakana',      from => 'Lingua::JA::Moji',             as => 'square2katakana'      });
-Sub::Install::install_sub({ code => 'circled2kana',         from => 'Lingua::JA::Moji',             as => 'circled2kana'         });
-Sub::Install::install_sub({ code => 'circled2kanji',        from => 'Lingua::JA::Moji',             as => 'circled2kanji'        });
+*nfkc                 = \&Unicode::Normalize::NFKC;
+*nfkd                 = \&Unicode::Normalize::NFKD;
+*nfc                  = \&Unicode::Normalize::NFC;
+*nfd                  = \&Unicode::Normalize::NFD;
+*decode_entities      = \&HTML::Entities::decode_entities;
+*alnum_z2h            = \&Lingua::JA::Regular::Unicode::alnum_z2h;
+*alnum_h2z            = \&Lingua::JA::Regular::Unicode::alnum_h2z;
+*space_z2h            = \&Lingua::JA::Regular::Unicode::space_z2h;
+*space_h2z            = \&Lingua::JA::Regular::Unicode::space_h2z;
+*katakana_z2h         = \&Lingua::JA::Regular::Unicode::katakana_z2h;
+*katakana_h2z         = \&Lingua::JA::Regular::Unicode::katakana_h2z;
+*katakana2hiragana    = \&Lingua::JA::Regular::Unicode::katakana2hiragana;
+*hiragana2katakana    = \&Lingua::JA::Regular::Unicode::hiragana2katakana;
+*dakuon_normalize     = \&Lingua::JA::Dakuon::dakuon_normalize;
+*handakuon_normalize  = \&Lingua::JA::Dakuon::handakuon_normalize;
+*all_dakuon_normalize = \&Lingua::JA::Dakuon::all_dakuon_normalize;
+*square2katakana      = \&Lingua::JA::Moji::square2katakana;
+*circled2kana         = \&Lingua::JA::Moji::circled2kana;
+*circled2kanji        = \&Lingua::JA::Moji::circled2kanji;
 
 sub new
 {
