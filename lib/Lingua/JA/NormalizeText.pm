@@ -47,11 +47,8 @@ our $SCRUBBER = HTML::Scrubber->new;
 # Error message:
 # - couldn't find subroutine named lc in package CORE
 # - Undefined subroutine &CORE::lc called
-=begin
-*lc = /&CORE::lc;
-*uc = /&CORE::uc;
-=end
-=cut
+#*lc = /&CORE::lc;
+#*uc = /&CORE::uc;
 
 *nfkc                 = \&Unicode::Normalize::NFKC;
 *nfkd                 = \&Unicode::Normalize::NFKD;
@@ -136,7 +133,7 @@ sub dashes2long          { local $_ = shift; return undef unless defined $_; tr/
 sub drawing_lines2long   { local $_ = shift; return undef unless defined $_; tr/\x{2500}\x{2501}\x{254C}\x{254D}\x{2574}\x{2576}\x{2578}\x{257A}/\x{30FC}/; $_; }
 sub unify_long_repeats   { local $_ = shift; return undef unless defined $_; tr/\x{30FC}/\x{30FC}/s; $_; }
 sub unify_long_spaces    { local $_ = shift; return undef unless defined $_; tr/\x{0020}/\x{0020}/s; tr/\x{3000}/\x{3000}/s; s/[\x{0020}\x{3000}]{2,}/\x{0020}/g; $_; }
-sub unify_whitespaces    { local $_ = shift; return undef unless defined $_; tr/\x{000B}\x{000C}\x{0085}\x{00A0}\x{1680}\x{180E}\x{2000}-\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}/\x{0020}/; $_; }
+sub unify_whitespaces    { local $_ = shift; return undef unless defined $_; tr/\x{000B}\x{000C}\x{0085}\x{00A0}\x{1680}\x{2000}-\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}/\x{0020}/; $_; }
 sub trim                 { local $_ = shift; return undef unless defined $_; s/^\s+//; s/\s+$//; $_; }
 sub ltrim                { local $_ = shift; return undef unless defined $_; s/^\s+//; $_; }
 sub rtrim                { local $_ = shift; return undef unless defined $_; s/\s+$//; $_; }
@@ -426,7 +423,6 @@ Converts the following characters into SPACE (U+0020).
   U+0085  NEXT LINE
   U+00A0  NO-BREAK SPACE
   U+1680  OGHAM SPACE MARK
-  U+180E  MONGOLIAN VOWEL SEPARATOR
   U+2000  EN QUAD
   U+2001  EM QUAD
   U+2002  EN SPACE

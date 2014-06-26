@@ -20,7 +20,7 @@ for my $dec ( hex('0000') .. hex('10FFFF') )
     }
 }
 
-my @white_space = qw/000B 000C 0085 00A0 1680 180E 2000 2001 2002 2003 2004
+my @white_space = qw/000B 000C 0085 00A0 1680 2000 2001 2002 2003 2004
 2005 2006 2007 2008 2009 200A 2028 2029 202F 205F/;
 
 is_deeply(\@hex, \@white_space);
