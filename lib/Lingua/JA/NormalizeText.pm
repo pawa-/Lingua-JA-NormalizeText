@@ -47,8 +47,8 @@ our $SCRUBBER = HTML::Scrubber->new;
 # Error message:
 # - couldn't find subroutine named lc in package CORE
 # - Undefined subroutine &CORE::lc called
-#*lc = /&CORE::lc;
-#*uc = /&CORE::uc;
+#*lc = \&CORE::lc;
+#*uc = \&CORE::uc;
 
 *nfkc                 = \&Unicode::Normalize::NFKC;
 *nfkd                 = \&Unicode::Normalize::NFKD;
