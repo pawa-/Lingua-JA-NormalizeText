@@ -376,6 +376,8 @@ Removes SPACE (U+0020) and IDEOGRAPHIC SPACE (U+3000).
 
 See [Lingua::JA::Dakuon](https://metacpan.org/pod/Lingua::JA::Dakuon).
 
+Note that Lingua::JA::NormalizeText enables $Lingua::JA::Dakuon::EnableCombining flag.
+
 ## square2katakana, circled2kana, circled2kanji
 
 See [Lingua::JA::Moji](https://metacpan.org/pod/Lingua::JA::Moji).
