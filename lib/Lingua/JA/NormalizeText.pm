@@ -70,6 +70,8 @@ our $SCRUBBER = HTML::Scrubber->new;
 *circled2kana         = \&Lingua::JA::Moji::circled2kana;
 *circled2kanji        = \&Lingua::JA::Moji::circled2kanji;
 
+$Lingua::JA::Dakuon::EnableCombining = 1;
+
 sub new
 {
     my $class = shift;
@@ -553,6 +555,8 @@ Removes SPACE (U+0020) and IDEOGRAPHIC SPACE (U+3000).
 =head2 dakuon_normalize, handakuon_normalize, all_dakuon_normalize
 
 See L<Lingua::JA::Dakuon>.
+
+Note that Lingua::JA::NormalizeText enables $Lingua::JA::Dakuon::EnableCombining flag.
 
 =head2 square2katakana, circled2kana, circled2kanji
 
