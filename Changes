@@ -2,6 +2,11 @@ Revision history for Perl extension Lingua::JA::NormalizeText
 
 {{$NEXT}}
 
+        - Improved documentation and tests
+        - Removed Sub::Install dependency
+        - Removed MONGOLIAN VOWEL SEPARATOR (U+180E) from unify_whitespaces option
+        - Enabled $Lingua::JA::Dakuon::EnableCombining flag
+
 0.43 2014-03-10T13:04:35Z
 
         - Improved documentation
