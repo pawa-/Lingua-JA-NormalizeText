@@ -19,10 +19,10 @@ is($normalizer->normalize("さ\x{3099}は\x{309A}" x 2), "ざぱ" x 2, "all daku
 {
     local $Lingua::JA::Dakuon::EnableCombining = 1;
     is(   dakuon_normalize("さ\x{309B}" x 2), "ざ" x 2,         "dakuon_normalize");
-    is(handakuon_normalize("は\x{309A}" x 2), "ぱ" x 2,         "handakuon_normalize");
     is(   dakuon_normalize("み\x{3099}" x 2), "み\x{3099}" x 2, "dakuon_normalize");
-    is(all_dakuon_normalize("さ\x{3099}は\x{309A}" x 2),   "ざぱ" x 2, "all_dakuon_normalize");
-    is($normalizer->normalize("さ\x{3099}は\x{309A}" x 2), "ざぱ" x 2, "all dakuon normalizer");
+    is(handakuon_normalize("は\x{309A}" x 2), "ぱ" x 2,         "handakuon_normalize");
+    is(all_dakuon_normalize("さ\x{3099}は\x{309A}" x 2),        "ざぱ" x 2, "all_dakuon_normalize");
+    is($normalizer->normalize("さ\x{3099}は\x{309A}" x 2),      "ざぱ" x 2, "all dakuon normalizer");
 }
 
 done_testing;

@@ -18,4 +18,15 @@ my $text = "あ${CR}い${LF}う${CRLF}え${LF}${CR}お${CR}${CR}か${LF}${LF}";
 is(unify_nl($text), "あ\nい\nう\nえ\n\nお\n\nか\n\n");
 is($normalizer->normalize($text), "あ\nい\nう\nえ\n\nお\n\nか\n\n");
 
+my %uniq_counter;
+
+for my $char ( split( //, unify_nl($text) ) )
+{
+    $uniq_counter{$char} = '';
+}
+
+# hira    : 6
+# new line: 1
+is(scalar keys %uniq_counter, 7);
+
 done_testing;

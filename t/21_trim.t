@@ -14,7 +14,7 @@ is(  trim("\x{0020}\x{0020}にゃ ？\x{3000}"), "にゃ ？",  "trim" );
 is( ltrim("\x{0020}\x{0020}にゃ ？\x{0020}"), "にゃ ？\x{0020}", "ltrim" );
 is( rtrim("\x{0020}\x{0020}にゃにゃーん\x{0020}！\x{0020}\x{0020}"), "\x{0020}\x{0020}にゃにゃーん\x{0020}！", "rtrim" );
 
-chomp(my $text = do { local $/; <DATA> });
+my $text = do { local $/; <DATA> };
 is(trim($text), "にゃんだかにゃー　\n にゃふん！", "trim multi-line");
 is($normalizer->normalize($text), "にゃんだかにゃー　\n にゃふん！", "normalize multi-line");
 
