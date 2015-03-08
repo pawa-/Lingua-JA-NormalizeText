@@ -4,7 +4,7 @@
       "pawa <pawapawa@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.1.1, CPAN::Meta::Converter version 2.141520",
+   "generated_by" : "Minilla/v2.3.0, CPAN::Meta::Converter version 2.141520",
    "license" : [
       "perl_5"
    ],
@@ -69,11 +69,11 @@
       "homepage" : "https://github.com/pawa-/Lingua-JA-NormalizeText",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/pawa-/Lingua-JA-NormalizeText",
+         "url" : "git://github.com/pawa-/Lingua-JA-NormalizeText.git",
          "web" : "https://github.com/pawa-/Lingua-JA-NormalizeText"
       }
    },
-   "version" : "0.45",
+   "version" : "0.50",
    "x_contributors" : [
       "pawa <pawa@dojikko.com>",
       "pawa <pawa@pawafuru.com>"
